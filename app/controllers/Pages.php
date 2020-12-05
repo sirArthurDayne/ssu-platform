@@ -17,7 +17,6 @@
         }
         public function about()
         {
-            //echo "<h1>About page loaded</h1>";
             $this->view('pages/about');
         }
     }
