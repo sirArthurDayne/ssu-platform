@@ -3,16 +3,20 @@
     class Pages extends Controller {
         public function __construct()
         {
-            //echo "Controller Loaded";
+            //Recover the model instance test
+            $this->proyectModel = $this->model('Proyect');
         }
         public function index()
         {
-            //load data from example
+            //Get data from Model
+            $users = $this->proyectModel->getProyects();
+
+            //load the data transfer
             $data = [
                 'title' => 'Home Page',
-                'name' => 'Xavier'
+                'users' => $users
             ];
-            //load the view from a path 
+            //load the view and transfer data
             $this->view('pages/index', $data);
         }
         public function about()
