@@ -4,6 +4,10 @@
 - Ponerle nombre explicativos a los commits que realicen (Expliquen cuales fueron las tareas que realizaron en ese commit).
 - Crear un pull request después de haber hecho el push.
 - Avisar cada vez que se haga un push.
+- Para el uso de la base de datos, es necesario que cada programador ingrese sus credenciales de forma manual dentro del archivo __config.php__ ubicado en la ruta ```app/config/config.php```, esto lo hacemos para evitar conflictos al momento de hacer pull a un.
+- Todos las clase *controlador* creadas deben tener la primera letra en mayuscula y nombre en *plural*. Ejemplo: ```Users.php```
+- Todos las clase *modelo* creadas deben tener la primera letra en mayuscula y nombre en *singular*. Ejemplo: ```User.php```
+- Todas las *vistas* deben estar dentro de una carpeta con el nombre del controlador en *minuscula*. Ejemplo: ```app/views/users/*.php``` 
 
 # **Tareas**
 
@@ -26,7 +30,7 @@ Ejemplo win10:
             - ```$ cd C:/Apache24/htdocs/```  
             -```$ git clone https://github.com/sirArthurDayne/ssu-platform.git``` 
 
-    **IMPORTANTE**: debe tener PHP7+, Apache Server y MySQL/MariaDB instalado previamente.
+    **IMPORTANTE**: debe tener PHP7+Composer, Apache Server y MySQL/MariaDB instalado previamente.
 2. Activar su Apache Server.
 3. Ir a su navegador de preferencia y colocar la ruta para probar que todo esta bien.
     - La ruta del proyecto en el browser es ```http://localhost/ssu-platform```  
