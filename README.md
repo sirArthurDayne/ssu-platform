@@ -7,7 +7,8 @@
 - Para el uso de la base de datos, es necesario que cada programador ingrese sus credenciales de forma manual dentro del archivo __config.php__ ubicado en la ruta ```app/config/config.php```, esto lo hacemos para evitar conflictos al momento de hacer pull a un.
 - Todos las clase *controlador* creadas deben tener la primera letra en mayuscula y nombre en *plural*. Ejemplo: ```Users.php```
 - Todos las clase *modelo* creadas deben tener la primera letra en mayuscula y nombre en *singular*. Ejemplo: ```User.php```
-- Todas las *vistas* deben estar dentro de una carpeta con el nombre del controlador en *minuscula*. Ejemplo: ```app/views/users/*.php``` 
+- Todas las *vistas* deben estar dentro de una carpeta con el nombre del controlador en *minuscula*. Ejemplo: ```app/views/users/*.php```
+- Cada programador debe de ir a config.php y levantar sus propias credenciales para la BD.
 
 # **Tareas**
 

@@ -53,12 +53,12 @@
             return $this->statement->num_rows;
         }
 
-        function __destruct()
+        /*function __destruct()
         {
             echo "destruyendo db connection";
             $this->statement->free_result();
             $this->db_handler->close();
-        }
+        }*/
 
     }
 ?>
