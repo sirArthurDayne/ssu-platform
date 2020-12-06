@@ -19,8 +19,7 @@
         echo "<p>user_name: " . $user["user_name"] . "password: " .
             $user["password"] . "</p>";
     }*/
-?>
-
+    ?>
 </body>
 </html>
 
