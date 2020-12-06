@@ -6,3 +6,8 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^(.*)$ index.php?url=$1 [L]
 </IfModule>
+
+<IfModule mod_mime.c>
+ AddType text/css .css
+ AddType text/javascript .js
+</IfModule>

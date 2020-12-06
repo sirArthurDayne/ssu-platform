@@ -1,4 +1,4 @@
-<?php 
+<?php
     //Main App class
     class Core{
         protected $currentController = 'Pages';//controlador por defecto, se activa cuando no encuentra
@@ -30,7 +30,7 @@
             }
             //recuperar parametros si tiene
             $this->params = $url ? array_values($url) : [];
-            
+
             //call a callback with array of params
             call_user_func_array([$this->currentController,$this->currentMethod], $this->params);
         }
@@ -43,7 +43,7 @@
                 $current_url = rtrim($_GET['url'], '/');
                 //filtra caracteres especiales de la ruta (string/number)
                 $current_url = filter_var($current_url, FILTER_SANITIZE_URL);
-                //separar url en un array para procesar 
+                //separar url en un array para procesar
                 $current_url = explode('/',$current_url);
                 return $current_url;
             }
