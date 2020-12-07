@@ -6,6 +6,7 @@
     <title>Inicio</title>
 </head>
 <body>
-<?php require '../../partials/header_footer.php'?>
+<?php require '../../partials/header.php'?>
 </body>
+<?php require '../../partials/footer.php'?>
 </html>
