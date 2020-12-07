@@ -5,9 +5,9 @@
     <title><?php echo $SITENAME;?></title>
 </head>
 <body>
-    
+    <h1><?= $data['title'];?></h1>;
 <?php
-    echo "<p>mvc is working, default view loaded!</p>";
+
     echo "APPROOT: " . APPROOT . "<br>";
     echo "URLROOT: ". URLROOT . "<br>";
     echo "SITENAME: " . SITENAME . "<br>";
@@ -19,7 +19,8 @@
         echo "<p>user_name: " . $user["user_name"] . "password: " .
             $user["password"] . "</p>";
     }*/
-    ?>
+?>
+
 </body>
 </html>
 
