@@ -17,10 +17,10 @@ class Proyect {
         $sql.= "fecha,horas,asesor_nombre,asesor_tel,";
         $sql.= "asesor_email,supervisor_nombre,supervisor_tel,supervisor_email,";
         $sql.= "organismo_nombre)";
-        $sql.= "VALUES(".$proposal['name'].",".$proposal['objective'].",".$proposal['description'].",".$proposal['level'].",".$proposal['mode'].",";
-        $sql.= $proposal['student_amount'].",".$proposal['student_profile'].",".$proposal['place'].",".$proposal['date'].",";
-        $sql.= $proposal['hours_amount'].",".$proposal['asesor_name'].",".$proposal['asesor_tel'].",".$proposal['asesor_email'].",";
-        $sql.= $proposal['supervisor_name'].",".$proposal['supervisor_tel'].",".$proposal['supervisor_email'].",".$proposal['organismo'].");";
+        $sql.= "VALUES('".$proposal['name']."','".$proposal['objective']."','".$proposal['description']."','".$proposal['level']."','".$proposal['mode']."','";
+        $sql.= $proposal['student_amount']."','".$proposal['student_profile']."','".$proposal['place']."','".$proposal['date']."','";
+        $sql.= $proposal['hours_amount']."','".$proposal['asesor_name']."','".$proposal['asesor_tel']."','".$proposal['asesor_email']."','";
+        $sql.= $proposal['supervisor_name']."','".$proposal['supervisor_tel']."','".$proposal['supervisor_email']."','".$proposal['organismo']."');";
 
         //execute query
         return $this->db->query($sql);

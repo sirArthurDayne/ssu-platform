@@ -6,6 +6,14 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Home Page de SSU</h1>
+    <h1><?php echo $data['title'];?></h1>
+
+    <?php
+    foreach($data['proyects'] as $proyect)
+    {
+        echo "<p>name: " . $proyect["titulo"] . "estado: " .
+            $proyect["estado_id"] . "</p>";
+    }
+?>
 </body>
 </html>
