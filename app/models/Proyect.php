@@ -27,10 +27,10 @@ class Proyect {
     }
     public function getProyects()
     {
-        //test query
-        //$this->db->query("SELECT * FROM proyecto");
-        //$result = $this->db->resultSet();
-        //return $result;
+        //recover query
+        $this->db->query("SELECT * FROM proyecto");
+        $result = $this->db->resultSet();
+        return $result;
     }
 
 }

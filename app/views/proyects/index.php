@@ -11,14 +11,15 @@
     echo "APPROOT: " . APPROOT . "<br>";
     echo "URLROOT: ". URLROOT . "<br>";
     echo "SITENAME: " . SITENAME . "<br>";
-
+    
+    //var_dump($data['proyects']);
+    
     //recover data from model transfer
-    /*
-    foreach ($data['users'] as $user)
+    foreach ($data['proyects'] as $proyect)
     {
-        echo "<p>user_name: " . $user["user_name"] . "password: " .
-            $user["password"] . "</p>";
-    }*/
+        echo "<p>titulo: " . $proyect["titulo"]. " objetivo: ".$proyect["objetivo"]
+         ." nivel: ".$proyect['nivel'] . " modalidad: ".$proyect['modalidad']."</p>";
+    }
     ?>
 </body>
 </html>

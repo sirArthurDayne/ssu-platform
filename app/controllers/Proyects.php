@@ -9,8 +9,11 @@
 
         public function index()
         {
+            $proyect_list = $this->proyectModel->getProyects();
+
             $data = [
-                'title' => 'index de registro de Propuesta de Proyecto'
+                'title' => 'index de registro de Propuesta de Proyecto',
+                'proyects' => $proyect_list
             ];
             $this->view('proyects/index', $data);
         }
@@ -41,8 +44,9 @@
                 'organismo' => ''
             ];
 
+
             //limpiar datos del post
-            if ($_SERVER['REQUEST_METHOD']=='POST')
+            if ($_POST != NULL)
             {
                 //limpiar el POST
                 echo "im in";
@@ -85,5 +89,7 @@
             //load the view and transfer data
             $this->view('proyects/register', $proposal_data);
         }
+
+
     }
 ?>
