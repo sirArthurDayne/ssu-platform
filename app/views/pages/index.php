@@ -1,25 +1,12 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta http-equiv="Cache-control" content="no-cache">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $SITENAME;?></title>
+    <title>Inicio</title>
 </head>
 <body>
-    
-<?php
-    echo "<p>mvc is working, default view loaded!</p>";
-    echo "APPROOT: " . APPROOT . "<br>";
-    echo "URLROOT: ". URLROOT . "<br>";
-    echo "SITENAME: " . SITENAME . "<br>";
-
-    //recover data from model transfer
-    /*
-    foreach ($data['users'] as $user)
-    {
-        echo "<p>user_name: " . $user["user_name"] . "password: " .
-            $user["password"] . "</p>";
-    }*/
-    ?>
+<?php require '../../partials/header.php'?>
 </body>
+<?php require '../../partials/footer.php'?>
 </html>
-
