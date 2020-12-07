@@ -71,7 +71,7 @@ option {
 .navbar-content1 {
   display: none;
   position: absolute;
-  background-color: white;
+  background-color: #bd14b4;
   min-width: 160px;
   overflow: auto;
   margin-top: 20px;
@@ -82,7 +82,7 @@ option {
 .navbar-content2 {
   display: none;
   position: absolute;
-  background-color: white;
+  background-color: #bd14b4;
   min-width: 160px;
   overflow: auto;
   margin-top: 20px;
@@ -96,6 +96,7 @@ option {
   padding: 12px 16px;
   text-decoration: none;
   text-align: center;
+  color: white;
   display: block;
 }
 
@@ -104,15 +105,16 @@ option {
   padding: 12px 16px;
   text-decoration: none;
   text-align: center;
+  color: white;
   display: block;
 }
 
 .navbar-content1 a:hover {
-  background-color: #bd14b4;
+  background-color: #93108d;
 }
 
 .navbar-content2 a:hover {
-  background-color: #bd14b4;
+  background-color: #93108d;
 }
 
 .navbar-dropdown1:hover .navbar-content1 {
@@ -170,7 +172,7 @@ option {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: white;
+  background-color: #93108d;
   min-width: 160px;
   overflow: auto;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
