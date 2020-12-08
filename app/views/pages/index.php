@@ -1,10 +1,12 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta http-equiv="Cache-control" content="no-cache">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $SITENAME;?></title>
+    <title>Inicio</title>
 </head>
 <body>
+<<<<<<< HEAD
     <h1><?= $data['title'];?></h1>;
 <?php
 
@@ -21,6 +23,9 @@
     }*/
 ?>
 
+=======
+<?php require '../../partials/header.php'?>
+>>>>>>> master
 </body>
+<?php require '../../partials/footer.php'?>
 </html>
-
