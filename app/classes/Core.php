@@ -41,6 +41,7 @@
             {
                 //eliminamos el '/' final
                 $current_url = rtrim($_GET['url'], '/');
+                $current_url = str_replace(URLROOT, "", $current_url);//delete URLROOT
                 //filtra caracteres especiales de la ruta (string/number)
                 $current_url = filter_var($current_url, FILTER_SANITIZE_URL);
                 //separar url en un array para procesar

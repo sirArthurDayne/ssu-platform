@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
-</head>
+
+<?php require APPROOT.'/partials/header.php'?>
+
 <body>
-<?php require '../../partials/header.php'?>
+    <?php require APPROOT.'/partials/navbar.php'?>
+    <h1><?php echo $data['title'] ?></h1>
+    <p><?php echo SITENAME;?></p>
+    <p><?php echo URLROOT;?></p>
+    <p><?php echo APPROOT;?></p>
 </body>
-<?php require '../../partials/footer.php'?>
-</html>
+
+<?php require APPROOT.'/partials/footer.php'?>

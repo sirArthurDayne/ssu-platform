@@ -30,10 +30,12 @@
             if($this->statement = $this->db_handler->query($sql))
             {
                  echo "Returned rows are: " . $this->resultAmount();
+                 return true;
             }
             else {
                 $this->error_handler = $this->db_handler->error;
                 echo "DB_ERROR:<br> query:" . $sql . "<br>" . $this->error_handler;
+                return false;
             }
         }
 
