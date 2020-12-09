@@ -1,7 +1,7 @@
-<?php require '../../partials/header.php'?>
+<?php require APPROOT.'/partials/header.php'?>
 
 <body>
-
+<?php require APPROOT.'/partials/navbar.php'?>
     <main>
         <h1><?php echo $data['title'];?></h1>
         <form action="<?php echo URLROOT; ?>/proyects/register" method="POST">
@@ -75,5 +75,5 @@
     </main>
 
 </body>
-<?php require '../../partials/footer.php'?>
+<?php require APPROOT.'/partials/footer.php'?>
 </html>

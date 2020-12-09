@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ver proyectos</title>
-</head>
+<?php require APPROOT.'/partials/header.php'?>
+
 <body>
-<?php require '../../partials/header.php'?>       
+<?php require APPROOT.'/partials/navbar.php'?>       
         <h1>Proyectos</h1>
         <div class="contenedor">
             <div>
@@ -26,4 +21,4 @@
     </div>
     </body>
 </html>
-<?php require '../../partials/footer.php'?>
+<?php require APPROOT.'/partials/footer.php'?>

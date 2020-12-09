@@ -1,6 +1,7 @@
-<?php require '../../partials/header.php'?>
+<?php require APPROOT.'/partials/header.php'?>
 
 <div class="informacion">
+<?php require APPROOT.'/partials/navbar.php'?>
         <h1>Datos de Proyecto</h1>
         <div class="datos">
             <div>
@@ -39,4 +40,4 @@
         </div>
     </div>
 
-    <?php require '../../partials/footer.php'?>
+    <?php require APPROOT.'/partials/footer.php'?>
