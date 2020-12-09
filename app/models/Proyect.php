@@ -33,4 +33,10 @@ class Proyect {
         return $result;
     }
 
+    public function getInProcessProyects()
+    {
+        $this->db->query("SELECT * FROM proyecto WHERE estado_id == 1");
+        $result = $this->db->resultSet();
+        return $result;
+    }
 }

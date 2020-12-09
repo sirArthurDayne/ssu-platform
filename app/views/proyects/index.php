@@ -1,12 +1,7 @@
-<html>
-<head>
-    <meta http-equiv="Cache-control" content="no-cache">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $SITENAME;?></title>
-</head>
+<?php require APPROOT.'/partials/header.php'?>
 <body>
-
-<main>
+    <?php require APPROOT.'/partials/navbar.php'?>
+    <main>
         <h1><?php echo $data['title'];?></h1>
         <form action="<?php echo URLROOT; ?>/proyects/register" method="POST">
             <fieldset>
@@ -76,8 +71,9 @@
 
             <button type="submit" data-message="enviar-propuesta">Enviar Formulario de Propuesta</button>
         </form>
-
-</main>
+    </main>
 
 </body>
-</html>
+
+
+<?php require APPROOT.'/partials/footer.php'?>

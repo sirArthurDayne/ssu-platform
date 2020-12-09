@@ -17,6 +17,7 @@
             $this->view('proyects/index', $proposal_data);
         }
 
+
         public function register()
         {
             //limpiar datos del post
@@ -58,6 +59,21 @@
             else {
                 die('ERROR, something failed when adding a proposal');
             }
+        }
+
+        public function seeproyects()
+        {
+
+            $this->view('proyects/seeproyects', $data);
+        }
+
+        public function adminproposals()
+        {
+           //load the data transfer
+            $data = [
+            'title' => 'Administrar Propuestas'
+            ];
+            $this->view('proyects/adminproposals', $data);
         }
 
 

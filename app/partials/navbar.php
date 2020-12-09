@@ -29,8 +29,8 @@
             <div class="navbar-dropdown1">
                 <button class="navbtn">Propuestas</button>
                 <div class="navbar-content1">
-                    <a>Ver propuestas</a>
-                    <a>Administrar propuestas</a>
+                    <a href="<?php URLROOT?>/proyects/seeproyects">Ver propuestas</a>
+                    <a href="<?php URLROOT?>/proyects/adminproposals">Administrar propuestas</a>
                     <a>3</a>
                 </div>
             </div>
