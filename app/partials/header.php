@@ -43,7 +43,6 @@
                 <div class="navbar-content1">
                     <a>Ver propuestas</a>
                     <a>Administrar propuestas</a>
-                    <a>3</a>
                 </div>
             </div>
             <div class="navbar-dropdown2">
@@ -51,7 +50,6 @@
                 <div class="navbar-content2">
                     <a>Visualizar proyectos</a>
                     <a>Administrar proyectos</a>
-                    <a>3</a>
                 </div>
             </div>
     </div>

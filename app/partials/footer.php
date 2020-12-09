@@ -11,7 +11,6 @@
     
 </body>
 <footer>
-    <div class="footer">
         <div class="img-footer">
             <img src="<?php echo $URLROOT?>/../public/img/logo_utp.png" width="90" height="90">
         </div>
@@ -36,6 +35,5 @@
                 <li><a href=""><i class ="fab fa-twitter-square fa-3x"></i></a></li>
             </ul>
         </div>
-    </div>
 </footer>
 </html>

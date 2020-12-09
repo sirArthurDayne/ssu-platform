@@ -188,7 +188,10 @@ option {
 
 /*footer*/
 
-.footer {
+footer {
+  position: relative;
+  bottom: 0px;
+  left: 0px;
   background-color: #575757;
   width: 100%;
   margin-top: 20px;
@@ -203,14 +206,14 @@ option {
 
 .text-footer {
   position: absolute;
-  bottom: -205px;
+  bottom: 10px;
   margin-left: 100px;
   color: white;
 }
 
 .info-footer {
   position: absolute;
-  bottom: -215px;
+  bottom: 1px;
   left: 550px;
   width: 35%;
   color: white;
@@ -218,7 +221,7 @@ option {
 
 .redes {
   position: absolute;
-  bottom: -205px;
+  bottom: 10px;
   right: 60px;
 }
 .redes li {
@@ -373,4 +376,68 @@ option {
 
 .datitos div {
   padding: 15px;
+}
+
+/*Registro*/
+
+fieldset {
+  border-radius: 10px;
+  margin: 20px auto 20px auto;
+  width: 50%;
+  border-color: #93108d;
+  box-shadow: -1px 1px 5px 1px rgb(148, 147, 147);
+}
+
+.datos-g {
+  margin-top: 80px;
+}
+
+.registrobtn {
+  border-radius: 5px;
+  margin: auto;
+  height: 30px;
+  background-color: #93108d;
+  color: white;
+  border: none;
+  position: relative;
+  bottom: 5px;
+  left: 800px;
+}
+
+.registrobtn:hover {
+  background-color: #bd14b4;
+}
+
+input {
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+input[type='text'] {
+  height: 30px;
+  width: 200px;
+}
+
+input[type='date'] {
+  height: 30px;
+  width: 200px;
+}
+
+input[type='number'] {
+  height: 30px;
+  width: 200px;
+}
+
+input[type='email'] {
+  height: 30px;
+  width: 200px;
+}
+
+input[type='tel'] {
+  height: 30px;
+  width: 200px;
+}
+
+input[type='radio']:after {
+  background-color: khaki;
 }
