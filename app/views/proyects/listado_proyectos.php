@@ -13,7 +13,9 @@
                     <h3>Descripcion:</h3>
                     <p> <?php echo $proyect['descripcion']; ?> </p>
                 </div>
-                <button class="optional-btn">Ver</button>
+                <form action="<?php echo URLROOT?>/proyects/listarproyectos" method="POST">
+                    <button name="proyectId_btn" class="optional-btn" value="<?php echo $proyect['id'];?>">Ver</button>
+                </form>
             </div>
             <br>
         <?php } ?>

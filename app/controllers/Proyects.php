@@ -93,10 +93,28 @@
         /*recuperar datos de proyectos APROBADOS*/
         public function listarproyectos()
         {
+
+            if ($_SERVER['REQUEST_METHOD'] == 'POST')
+            {
+                $proyect_id_selected = -1;
+                if (isset($_POST['proyectId_btn']))
+                {
+                    //transicion a pantalla de ver de proyectos
+                    $proyect_id_selected = $_POST['proyectId_btn'];
+                    header('location:' . URLROOT . '/proyects/seedetails/' . $proyect_id_selected);
+                }
+
+            }
+
+
             $aprovedProyects = $this->proyectModel->getProyectByState(2);
             $data = ['title' => 'Listado Proyectos de Labor Social',
                      'aproved' => $aprovedProyects
-                    ];  
+                    ];
+
+
+
+            
             $this->view('proyects/listado_proyectos', $data);
         }
         
@@ -104,6 +122,16 @@
         public function listarpropuestas()
         {
             $proposals_data = $this->proyectModel->getInProcessProyects();
+
+            if($_SERVER['REQUEST_METHOD'] == 'POST')
+            {
+                $proyect_id_selected = -1;
+                if(isset($_POST['getproyectIdBtn']) != null)
+                {
+                    $proyect_id_selected = $_POST['getproyectIdBtn'];
+                    header('location:' . URLROOT . '/proyects/seedetails/' . $proyect_id_selected);
+                }
+            }
 
             $data = ['title' => 'Listado de propuestas',
                      'propuestas' => $proposals_data];
@@ -199,6 +227,19 @@
             $this->view('proyects/editar_propuesta', $data);
         }
 
+        /*Visualizar detalles de proyectos*/
+        public function seedetails($params)
+        {
+            $proyectId = $params;
+            $seeDetailsProyect = $this->proyectModel->getEditProyect($proyectId);
+            $data = [
+                'title' => 'Visualizar Proyecto',
+                'seeProyect' => $seeDetailsProyect
+                
+            ];
+            
+            $this->view("proyects/vista_de_proyecto", $data);
+        }
 
     }
 ?>

@@ -21,7 +21,9 @@
                    <?php echo $proposal['descripcion']; ?>
                 </p>
             </div>
-            <button class="optional-btn">Ver</button>
+            <form action="<?php echo URLROOT ?>/proyects/listarpropuestas" method="POST">
+                <button class="optional-btn" name="getproyectIdBtn" value="<?php echo $proposal['id'];?>">Ver</button>
+            </form>
         </div>
     </div>
     <br>
