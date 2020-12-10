@@ -4,17 +4,17 @@
         public function __construct()
         {
             //Recover the model instance test
-            $this->proyectModel = $this->model('Proyect');
+            //$this->proyectModel = $this->model('Proyect');
         }
         public function index()
         {
             //Get data from Model
-            $proyects = $this->proyectModel->getProyects();
+            //$proyects = $this->proyectModel->getProyects();
 
             //load the data transfer
             $data = [
-                'title' => 'Home Page',
-                'proyects' => $proyects
+                'title' => 'Pagina Principal',
+                //'proyects' => $proyects
             ];
             //load the view and transfer data
             $this->view('homes/index', $data);

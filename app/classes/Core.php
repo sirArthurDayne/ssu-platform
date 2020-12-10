@@ -1,7 +1,7 @@
 <?php
     //Main App class
     class Core{
-        protected $currentController = 'Pages';//controlador por defecto, se activa cuando no encuentra
+        protected $currentController = 'Homes';//controlador por defecto, se activa cuando no encuentra
         protected $currentMethod = 'index';//metodo por defecto, se activa cuando no encuentra
         protected $params = []; //carga la ruta que se ingrese
 
