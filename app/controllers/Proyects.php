@@ -177,9 +177,23 @@
                         'objective' => trim($_POST['proyect_obj']),
                         'description' => trim($_POST['proyect_descr']),
                         'level' => trim($_POST['level']),
-                        'mode' => trim($_POST['modalidad'])
+                        'mode' => trim($_POST['modalidad']),
+                        'stud_amount' => trim($_POST['student_amount']),
+                        'stud_profile' => trim($_POST['student_profile']),
+                        'hours' => trim($_POST['hours_amount']),
+                        'place'=> trim($_POST['place']),
+                        'place_descr' => trim($_POST['place_descr']),
+                        'proyect_obj' => trim($_POST['proyect_obj']),
+                        'proyect_descr' => trim($_POST['proyect_descr']),
+                        'asesor_name' => trim($_POST['asesor_name']),
+                        'asesor_tel' => trim($_POST['asesor_tel']),
+                        'asesor_email' => trim($_POST['asesor_email']),
+                        'supervisor_name'=> trim($_POST['supervisor_name']),
+                        'supervisor_tel' => trim($_POST['supervisor_tel']),
+                        'supervisor_email' => trim($_POST['supervisor_email']),
+                        'organismo' => trim($_POST['organismo'])
                     ];
-                    echo "getting data...";
+                    var_dump($newProyectData);
 
                     if ($this->proyectModel->insertIntoCurrentProyect($newProyectData, $proyectId))
                     {
