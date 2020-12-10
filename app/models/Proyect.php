@@ -53,5 +53,27 @@ class Proyect {
 
         return false;
     }
+
+    /*Retorna la propuesta a editar */
+    public function getEditProyect($proyectId)
+    {
+        $sql = "SELECT * from proyecto WHERE id = " . $proyectId . ";";
+        
+        $this->db->query($sql);
+        $result = $this->db->singleResult();
+        return $result;
+
+    }
     
+    /*Actualiza informacion de proyecto editado */
+    public function insertIntoCurrentProyect($new_data, $proyectId)
+    {
+        $sql = "UPDATE proyecto SET titulo = '" .$new_data['name'] ."' , objetivo = '" .$new_data['objective'] . "', descripcion = '" .
+            $new_data['description'] . "', nivel = '" . $new_data['level'] .  "' , modalidad = '" . $new_data['mode'] . 
+            "' WHERE id = " . $proyectId . ";";
+        
+        if ($this->db->query($sql)) return true;
+        
+        return false;
+    }
 }

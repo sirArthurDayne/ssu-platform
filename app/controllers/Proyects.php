@@ -1,6 +1,9 @@
 <?php
     //Clase Controlador de Proyectos, esta se encarga de acceder a la BD
     class Proyects extends Controller{
+        
+        private $lastEditedProyectId = -1;
+
         public function __construct()
         {
             //Recuperar el modelo de Proyectos
@@ -67,11 +70,11 @@
                     'supervisor_email' => trim($_POST['supervisor_email']),
                     'organismo' => trim($_POST['organismo'])
                 ];
-                
+
                 //TODO: validate before sending to DB
                 //$text_regex = "/^[a-zA-Z0-9]*$/";
                 //$number_regex = "/^[0-9]*$/";
-                
+
                 //register proposal inside BD throw the 'ProyectModel'
                 if($this->proyectModel->registerProyect($proposal_data))
                 {
@@ -82,7 +85,7 @@
                 else {
                     die('ERROR, something failed when adding a proposal');
                 }
-                
+
             }
             $this->view("proyects/registro", $proposal_data);
         }
@@ -102,7 +105,7 @@
 
             $data = ['title' => 'Listado de propuestas',
                      'propuestas' => $proposals_data];
-        
+
             $this->view('proyects/listado_propuestas', $data);
         }
 
@@ -126,7 +129,7 @@
                     $action_message = $this->proyectModel->setProyectState($proyect_id_selected, $state) ? "se aprobo un proyecto" : "error detectado";
                     header('location: ' . URLROOT . '/proyects/adminproposals');
                 }
-                else if($_POST['admin_action']==2 && $proyect_id_selected != -1) 
+                else if($_POST['admin_action']==2 && $proyect_id_selected != -1)
                 {
                     /* ...APROBAR PROYECTO... */
                     $state = 2;
@@ -134,9 +137,10 @@
                     header('location: ' . URLROOT . '/proyects/adminproposals');
                 }
                 else if($_POST['admin_action']==1 && $proyect_id_selected != -1)
-                { 
-                    /* ...EDITAR PROYECTO... */ 
-                    header('location:' . URLROOT . '/proyects/editProyect');
+                {
+                    /* ...EDITAR PROYECTO... */
+                    $this->lastEditedProyectId = $proyect_id_selected;
+                    header('location:' . URLROOT . '/proyects/editproposal/'. $this->lastEditedProyectId);
                 }
             }
             $data = [
@@ -145,6 +149,52 @@
             'user_message' => $action_message
             ];
             $this->view('proyects/administrar_propuestas', $data);
+        }
+
+        public function editproposal($params)
+        {
+            //recuperar datos de propuesta que se va a editar
+            $proyectId = $params;
+            $toEditProyectData = $this->proyectModel->getEditProyect($proyectId);
+
+            //TODO: checkear post, recuperar datos, actualizar la bd y cambiar de pantalla
+            if($_SERVER['REQUEST_METHOD'] == 'POST')
+            {
+                if($_POST['user_edit'] == 1)//cancelar
+                {
+                    //volver que administracion  
+                    header('location: ' . URLROOT . '/proyects/adminproposals');
+                }
+                else //aceptar
+                {
+                    //TODO: validar datos antes de insertar 
+
+                    //recuperar datos
+                    $newProyectData = [
+                        'name' => trim($_POST['proyect_name']),
+                        'objective' => trim($_POST['proyect_obj']),
+                        'description' => trim($_POST['proyect_descr']),
+                        'level' => trim($_POST['level']),
+                        'mode' => trim($_POST['modalidad'])
+                    ];
+                    echo "getting data...";
+
+                    if ($this->proyectModel->insertIntoCurrentProyect($newProyectData, $proyectId))
+                    {
+                        header('location: ' . URLROOT . '/proyects/adminproposals');
+                    }
+                    else // si falla todo
+                    {
+                       header('location: ' . URLROOT . '/pages/index');
+                    }
+
+                }
+            }
+
+            $data = ['title' => 'Editar propuestas',
+                     'proyecto' => $toEditProyectData,
+            ];
+            $this->view('proyects/editar_propuesta', $data);
         }
 
 
