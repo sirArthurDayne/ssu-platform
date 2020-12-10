@@ -178,6 +178,7 @@
                         'description' => trim($_POST['proyect_descr']),
                         'level' => trim($_POST['level']),
                         'mode' => trim($_POST['modalidad'])
+                        
                     ];
                     echo "getting data...";
 

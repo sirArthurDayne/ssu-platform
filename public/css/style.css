@@ -551,7 +551,16 @@ input[type='radio']:after {
   box-shadow: -2px 2px 8px 1px gray;
 }
 
+.info_prim{
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+}
+
 .description{
+  display: flex;
+  flex-direction: column;
+  width: 600px;
   grid-column-start: 2;
   margin-top: 75px;
   margin-left: 6%;
@@ -577,6 +586,7 @@ input[type='radio']:after {
 
 .datototes{
   display: flex;
+  flex-direction: column;
   padding-left: 7%;
   padding-right: 7%;
 }
@@ -587,10 +597,11 @@ input[type='radio']:after {
 
 .areadetexto{
   font-family: 'Rubik', sans-serif;
+  width: 400px;
   border-radius: 8px;
   box-sizing: border-box;
   overflow: hidden;
-  height: 25%;
+  height: 5%;
   font-size: large;
   
 }
@@ -611,11 +622,6 @@ input[type='radio']:after {
   width: 90%;
 }
 
-.modrad{
+.data_ed{
   position: relative;
 }
-
-.nivrad{
-  position: relative;
-}
-
