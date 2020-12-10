@@ -74,7 +74,7 @@ option {
   background-color: #bd14b4;
   min-width: 160px;
   overflow: auto;
-  margin-top: 20px;
+  margin-top: 12px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
@@ -85,7 +85,7 @@ option {
   background-color: #bd14b4;
   min-width: 160px;
   overflow: auto;
-  margin-top: 20px;
+  margin-top: 12px; 
   margin-left: 100px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
@@ -265,10 +265,21 @@ footer {
   width: 75px;
   padding: 10px;
   color: white;
-  background-color: #93108d;
   border: 0px;
   box-shadow: -1px 1px 5px 1px rgb(148, 147, 147);
   cursor: pointer;
+}
+
+.accept-btn{
+  background-color:#209310;
+}
+
+.reject-btn{
+  background-color: red;
+}
+
+.optional-btn{
+ background-color: #93108d;
 }
 
 .contenedor img {
@@ -309,17 +320,17 @@ footer {
   height: 65px;
   width: 400px;
 }
-
+/* 
 .contenedor button {
   margin: auto;
   width: 75px;
   padding: 10px;
   color: white;
-  background-color: #93108d;
+  background-color: #93108d; 
   border: 0px;
   box-shadow: -1px 1px 5px 1px rgb(148, 147, 147);
   cursor: pointer;
-}
+} */
 
 .contenedor img {
   margin-top: 15px;
@@ -446,43 +457,69 @@ input[type='radio']:after {
 }
 
 /*Home*/
-.mision {
-  width: 40%;
-  height: 250px;
-  border: black 1px double;
-  padding: 80px 10px 0px 10px;
-  position: relative;
-  left: 20px;
-  margin-top: 20px;
+
+.home-container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 75vw;
+  width: 100vw;
+  min-height: 75vh;
 }
 
-.vision {
-  width: 40%;
-  height: 250px;
-  border: black 1px;
-  position: relative;
-  right: -760px;
-  bottom: 150px;
-  border: black 1px double;
-  padding: 80px 10px 0px 10px;
-  margin-top: -180px;
+.title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
 }
 
-.vision h1 {
-  text-align: center;
+.content-container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  width: 75%;
+  height:auto;
+  padding-top: 2rem;
 }
 
-.mision h1 {
-  text-align: center;
+.mision-content {
+  padding-left: 1rem;
+  margin: 1rem;
+  box-shadow: -2px 2px 8px 1px gray;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
 }
 
-.vision p {
+.vision-content {
+  padding-left: 1rem;
+  margin: 1rem;
+  box-shadow: -2px 2px 8px 1px gray;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
+
+.mision-content > *{
+  justify-self: center;
+  align-self: center;
+}
+
+.mision-content > p {
   text-align: justify;
-  vertical-align: middle;
 }
-.mision p {
+
+.vision-content > * {
+  justify-self: center;
+  align-self: center;
+}
+
+.vision-content > p {
   text-align: justify;
 }
+
 
 .home-banner {
   display: block;

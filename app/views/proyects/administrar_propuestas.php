@@ -19,9 +19,9 @@
             </div>
             <form class="button_container" action="<?php echo URLROOT; ?>/proyects/adminproposals" method="POST">
                 <input type="hidden" name="selected_proyectid" id="" value="<?php echo $proposal['id'];?>">
-                <button name="admin_action" value="3" onclick="alert('se ha rechazado la propuesta: <?php echo $proposal['titulo']?>')">Rechazar</button>
-                <button name="admin_action" value="2" onclick="alert('se ha aprobado la propuesta: <?php echo $proposal['titulo']?>')">Aprobar</button>
-                <button name="admin_action" value="1" onclick="alert('se empezara a editar la propuesta: <?php echo $proposal['titulo']?>')">Editar</button>
+                <button class="reject-btn" name="admin_action" value="3" onclick="alert('se ha rechazado la propuesta: <?php echo $proposal['titulo']?>')">Rechazar</button>
+                <button class="accept-btn" name="admin_action" value="2" onclick="alert('se ha aprobado la propuesta: <?php echo $proposal['titulo']?>')">Aprobar</button>
+                <button class="optional-btn" name="admin_action" value="1" onclick="alert('se empezara a editar la propuesta: <?php echo $proposal['titulo']?>')">Editar</button>
             </form>
 
         </div>

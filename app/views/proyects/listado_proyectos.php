@@ -16,7 +16,7 @@
                      vel finibus enim. Vivamus purus magna. 
                 </p>
             </div>
-            <button>Ver</button>
+            <button class="optional-btn">Ver</button>
         </div>
     </div>
     </body>
