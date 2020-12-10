@@ -20,7 +20,7 @@
                 $this->error_handler = $this->db_handler->connect_error;
                 die("Connection to DB failed!: " . $this->error_handler);
             }
-            echo "connection to db working!";
+            //echo "connection to db working!";
             return $this->db_handler;
         }
 
@@ -29,7 +29,7 @@
         {
             if($this->statement = $this->db_handler->query($sql))
             {
-                 echo "Returned rows are: " . $this->resultAmount();
+                 //echo "Returned rows are: " . $this->resultAmount();
                  return true;
             }
             else {

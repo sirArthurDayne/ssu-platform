@@ -13,7 +13,7 @@
 
             //load the data transfer
             $data = [
-                'title' => 'Ver Proyectos en Homepage',
+                'title' => 'Home Page',
                 'proyects' => $proyects
             ];
             //load the view and transfer data
