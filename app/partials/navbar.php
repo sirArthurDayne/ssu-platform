@@ -38,9 +38,7 @@
             <div class="navbar-dropdown2">
                 <button class="navbtn">Proyectos</button>
                 <div class="navbar-content2">
-                    <a href="#"alt="#">Visualizar proyectos</a>
-                    <a href="#">Administrar proyectos</a>
-                    <a>3</a>
+                    <a href="<?php echo $url_root ?>/proyects/listarproyectos"alt="#">Visualizar proyectos</a>
                 </div>
             </div>
     </div>

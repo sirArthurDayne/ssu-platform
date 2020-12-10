@@ -90,17 +90,19 @@
             $this->view("proyects/registro", $proposal_data);
         }
 
-        public function listar_proyectos()
+        /*recuperar datos de proyectos APROBADOS*/
+        public function listarproyectos()
         {
-            //recuperar datos de proyectos APROBADOS
-
-            $data = ['title' => 'Listado Proyectos'];
+            $aprovedProyects = $this->proyectModel->getProyectByState(2);
+            $data = ['title' => 'Listado Proyectos de Labor Social',
+                     'aproved' => $aprovedProyects
+                    ];  
             $this->view('proyects/listado_proyectos', $data);
         }
-
+        
+        /*Recuperar datos de propuestas ENPROCESO*/
         public function listarpropuestas()
         {
-            //Recuperar datos de propuestas ENPROCESO
             $proposals_data = $this->proyectModel->getInProcessProyects();
 
             $data = ['title' => 'Listado de propuestas',
