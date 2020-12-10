@@ -4,17 +4,17 @@
         public function __construct()
         {
             //Recover the model instance test
-            //$this->proyectModel = $this->model('Proyect');
+            $this->proyectModel = $this->model('Proyect');
         }
         public function index()
         {
             //Get data from Model
-            //$users = $this->proyectModel->getProyects();
+            $proyectList = $this->proyectModel->getProyects();
 
             //load the data transfer
             $data = [
-                'title' => 'Area de testing',
-               // 'users' => $users
+                'title' => 'Error 404, Controlador No encontrado',
+                'proyects' => $proyectList
             ];
             //load the view and transfer data
             $this->view('pages/index', $data);

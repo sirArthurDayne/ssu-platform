@@ -21,7 +21,7 @@
                    <?php echo $proposal['descripcion']; ?>
                 </p>
             </div>
-            <button>Ver</button>
+            <button class="optional-btn">Ver</button>
         </div>
     </div>
     <br>

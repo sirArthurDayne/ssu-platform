@@ -1,7 +1,7 @@
 <?php
     //Main App class
     class Core{
-        protected $currentController = 'Pages';//controlador por defecto, se activa cuando no encuentra
+        protected $currentController = 'Homes';//controlador por defecto, se activa cuando no encuentra
         protected $currentMethod = 'index';//metodo por defecto, se activa cuando no encuentra
         protected $params = []; //carga la ruta que se ingrese
 
@@ -9,13 +9,16 @@
         {
             //print_r($this->getUrl());
             $url = $this->getUrl();
-            //buscar primero el controlador. ucwords:coloca mayuscula a la primera letra
-            if (file_exists('../app/controllers/' . ucwords($url[0]) . '.php'))
+            //buscar primero el controlador, si existe. ucwords:coloca mayuscula a la primera letra
+            if(isset($url[0]))
             {
-                $this->currentController = ucwords($url[0]);
-                unset($url[0]);
+                if (file_exists('../app/controllers/' . ucwords($url[0]) . '.php'))
+                {
+                    $this->currentController = ucwords($url[0]);
+                    unset($url[0]);
+                }
             }
-            //recupera el controlador
+                //recupera el controlador
             require_once '../app/controllers/' . $this->currentController . '.php';
             $this->currentController = new $this->currentController;
 

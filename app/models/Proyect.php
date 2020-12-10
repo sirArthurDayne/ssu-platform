@@ -42,6 +42,16 @@ class Proyect {
         return $result;
     }
 
+    /** Retorna los proyectos segun su estado */
+    public function getProyectByState($current_state)
+    {
+        $sql = "SELECT * FROM proyecto WHERE estado_id = " . $current_state . " ;";
+        $this->db->query($sql);
+        $result = $this->db->resultSet();
+        return $result;
+    }
+
+
     /*cambiar estado de proyecto */
     public function setProyectState($proyectId, $state_value)
     {
