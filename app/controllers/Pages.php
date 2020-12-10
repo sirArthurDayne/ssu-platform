@@ -13,7 +13,7 @@
 
             //load the data transfer
             $data = [
-                'title' => 'Home Page',
+                'title' => 'Area de testing',
                // 'users' => $users
             ];
             //load the view and transfer data

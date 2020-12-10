@@ -238,6 +238,7 @@ footer {
 
 .contenedor {
   display: flex;
+  align-items: center;
   margin: 0px auto;
   border: solid 1px gray;
   border-radius: 20px;
@@ -249,13 +250,14 @@ footer {
 .contenedor div {
   margin: 10px;
   padding-left: 20px;
+  width: 300px;
 }
 
 .contenedor p {
   text-overflow: ellipsis;
-  overflow: scroll;
+  overflow: auto;
   height: 65px;
-  width: 400px;
+  width: 300px;
 }
 
 .contenedor button {

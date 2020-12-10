@@ -1,15 +1,14 @@
 <?php require APPROOT.'/partials/header.php'?>
+
 <body>
-<?php require APPROOT.'/partials/navbar.php'?>
-<h1>Administrar Propuesta</h1>
+<?php require APPROOT.'/partials/navbar.php'?>       
+        <h1><?php echo $data['title']?></h1>
         <div class="contenedor">
             <div>
-                <h2 class="titulo_proyecto">Proyecto Playa</h2>
-                <h4 class="responsable">Responsable: Carlos Perez</h4>
-                <h4 class="lugar">Lugar: arraijan</h4>
+                <img src="https://i.pinimg.com/originals/62/ac/2b/62ac2b87143d1b21bce9395281246ad9.jpg" alt="">
             </div>
             <div>
-                <br><br>
+                <h2 class="titulo_proyecto">Proyecto Playa</h2>
                 <h4>Descripcion:</h4>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ligula libero,
@@ -17,10 +16,9 @@
                      vel finibus enim. Vivamus purus magna. 
                 </p>
             </div>
-            <button>Aprobar</button>
-            <button>Rechazar</button>
-            <button>Editar</button>
+            <button>Ver</button>
         </div>
-        </body>
+    </div>
+    </body>
 </html>
 <?php require APPROOT.'/partials/footer.php'?>

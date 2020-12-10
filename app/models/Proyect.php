@@ -35,8 +35,23 @@ class Proyect {
 
     public function getInProcessProyects()
     {
-        $this->db->query("SELECT * FROM proyecto WHERE estado_id == 1");
+        //retorna solo proyectos que esten marcados como ENPROCESO en la BD 
+        
+        $this->db->query("SELECT * FROM proyecto WHERE estado_id = 1");
         $result = $this->db->resultSet();
         return $result;
     }
+
+    /*cambiar estado de proyecto */
+    public function setProyectState($proyectId, $state_value)
+    {
+        //ESTADOS: 1=> ENPROCESO
+        //ESTADOS: 2=> APROBADOS
+        //ESTADOS: 3=> RECHAZADOS
+        $sql = "UPDATE proyecto SET estado_id = ".$state_value . " WHERE id = ". $proyectId . ";";
+        if($this->db->query($sql)) return true;
+
+        return false;
+    }
+    
 }
