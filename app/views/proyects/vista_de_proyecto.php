@@ -16,14 +16,6 @@
                         <h4>Nivel de Proyecto:</h4>
                         <p>nivel 1</p>
                     </div>
-                    <div>
-                        <h4>Facultades Participantes:</h4>
-                        <ul>
-                            <li>Civil</li>
-                            <li>Ciencia y tecnologia</li>
-                            <li>Mecanica</li>
-                        </ul>
-                    </div>
                 </div>
             </div>
             <div class="descripcion">
