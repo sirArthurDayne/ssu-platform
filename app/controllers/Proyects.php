@@ -183,9 +183,9 @@
                     {
                         header('location: ' . URLROOT . '/proyects/adminproposals');
                     }
-                    else // si falla todo
+                    else // si falla todo, regresas a la pagina principal
                     {
-                       header('location: ' . URLROOT . '/pages/index');
+                       header('location: ' . URLROOT . '/homes/index');
                     }
 
                 }
