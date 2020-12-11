@@ -6,23 +6,25 @@
     <?php $current_proyect = $data['proyecto']; ?>
 
     <form action="<?php echo URLROOT ?>/proyects/editproposal/<?php echo $current_proyect['id']?>" method="POST">
-        <div class="informacionita">            
+        <div class="informacionita">
             <div class="dataa">
                 <div class="info_prim">
                     <div class="datototes">
                         <div class="data_ed">
                         <h2>Nombre del Proyecto</h2>
                         <label for="proyect_name"><input type="text" id="proyect_name" name="proyect_name" value="<?php echo $current_proyect['titulo'];?>" class="titulo_editar"></label>
-                        <img src="https://i.pinimg.com/originals/62/ac/2b/62ac2b87143d1b21bce9395281246ad9.jpg" alt="foto">
+                        <img src="<?php echo $current_proyect['imagen']; ?>" alt="portada de proyecto">
+                        <label for="proyect_image">portada(url): </label>
+                        <input type="text" name="proyect_image" value="<?php echo $current_proyect['imagen']?>" />
                         <h4>Modalidad</h4>
                         <?php if($current_proyect['modalidad'] == 'individual') { ?>
                         <label> <input type="radio" name="modalidad" value="individual" checked="true">Individual </label><br>
-                        <label> <input type="radio" name="modalidad" value="grupo">Grupal</label> 
+                        <label> <input type="radio" name="modalidad" value="grupo">Grupal</label>
                         <?php }
                         else {
                         ?>
                         <label> <input type="radio" name="modalidad" value="individual">Individual</label><br>
-                        <label> <input type="radio" name="modalidad" value="grupo" checked="true">Grupal</label> 
+                        <label> <input type="radio" name="modalidad" value="grupo" checked="true">Grupal</label>
                         <?php }?>
                      </div>
                         <div class="data_ed">
@@ -49,9 +51,9 @@
                             <label for="place">Lugar de realizacion</label><br>
                             <input type="text" name="place" placeholder="*" value="<?php echo $current_proyect['lugar'];?>"><br>
                             <label for="place_descr">Lugar descripcion</label><br>
-                            <input type="text" id="place_descr" name="place_descr" placeholder="*" >
+                            <input type="text" id="place_descr" name="place_descr" placeholder="*" value="<?php echo $current_proyect['lugar_descr']; ?>">
                         </div>
-                        
+
                     </div>
                 </div>
                 <div class="description">
@@ -88,7 +90,7 @@
             <button type="submit" class="boton" name="user_edit"  value="1" onclick="alert('cancelando edicion...')">Cancelar</button>
             <button type="submit" class="boton" name="user_edit"  value="2" onclick="alert('guardando cambios...')">Aceptar</button>
         </div>
-    
+
     </form>
 
 </body>

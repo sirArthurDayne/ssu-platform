@@ -43,7 +43,9 @@
             'supervisor_name' => '',
             'supervisor_tel' => '',
             'supervisor_email' => '',
-            'organismo' => ''
+            'organismo' => '',
+            'imagen' => '',
+            'lugar_descr'=> ''
         ];
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -68,13 +70,15 @@
                     'supervisor_name' => trim($_POST['supervisor_name']),
                     'supervisor_tel' => trim($_POST['supervisor_tel']),
                     'supervisor_email' => trim($_POST['supervisor_email']),
-                    'organismo' => trim($_POST['organismo'])
+                    'organismo' => trim($_POST['organismo']),
+                    'imagen' => $_POST['proyect_image'],
+                    'lugar_descr' => trim($_POST['place_descr'])
                 ];
+
 
                 //TODO: validate before sending to DB
                 //$text_regex = "/^[a-zA-Z0-9]*$/";
                 //$number_regex = "/^[0-9]*$/";
-
                 //register proposal inside BD throw the 'ProyectModel'
                 if($this->proyectModel->registerProyect($proposal_data))
                 {
@@ -219,7 +223,9 @@
                         'supervisor_name'=> trim($_POST['supervisor_name']),
                         'supervisor_tel' => trim($_POST['supervisor_tel']),
                         'supervisor_email' => trim($_POST['supervisor_email']),
-                        'organismo' => trim($_POST['organismo'])
+                        'organismo' => trim($_POST['organismo']),
+                        'imagen' => trim($_POST['proyect_image']),
+                        'lugar_descr' => trim($_POST['place_descr'])
                     ];
 
                     /* var_dump($newProyectData); */

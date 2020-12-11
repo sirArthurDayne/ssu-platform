@@ -16,11 +16,11 @@ class Proyect {
         $sql.= "modalidad,est_cantidad,est_perfil,lugar,";
         $sql.= "fecha,horas,asesor_nombre,asesor_tel,";
         $sql.= "asesor_email,supervisor_nombre,supervisor_tel,supervisor_email,";
-        $sql.= "organismo_nombre)";
+        $sql.= "organismo_nombre, imagen, lugar_descr)";
         $sql.= "VALUES('".$proposal['name']."','".$proposal['objective']."','".$proposal['description']."','".$proposal['level']."','".$proposal['mode']."','";
         $sql.= $proposal['student_amount']."','".$proposal['student_profile']."','".$proposal['place']."','".$proposal['date']."','";
         $sql.= $proposal['hours_amount']."','".$proposal['asesor_name']."','".$proposal['asesor_tel']."','".$proposal['asesor_email']."','";
-        $sql.= $proposal['supervisor_name']."','".$proposal['supervisor_tel']."','".$proposal['supervisor_email']."','".$proposal['organismo']."');";
+        $sql.= $proposal['supervisor_name']."','".$proposal['supervisor_tel']."','".$proposal['supervisor_email']."','".$proposal['organismo']. "','". $proposal['imagen']. "','" . $proposal['lugar_descr'] . "');";
 
         //execute query
         return $this->db->query($sql);
@@ -83,7 +83,7 @@ class Proyect {
             $new_data['stud_amount'] . "', est_perfil = '" . $new_data['stud_profile'] . "', lugar = '". $new_data['place'] ."', horas = '" . $new_data['hours']. "', asesor_nombre = '" .
             $new_data['asesor_name'] . "', asesor_tel = '" . $new_data['asesor_tel'] . "', asesor_email = '" . $new_data['asesor_email'] . "', supervisor_nombre = '" .
             $new_data['supervisor_name'] . "', supervisor_tel = '" . $new_data['supervisor_tel'] . "', supervisor_email = '" . $new_data['supervisor_email'] . "', organismo_nombre = '" .
-            $new_data['organismo'] .
+            $new_data['organismo'] . "', imagen = '" .$new_data['imagen'] . "', lugar_descr = '" . $new_data['lugar_descr'] .
             "' WHERE id = " . $proyectId . ";";
 
         if ($this->db->query($sql)) return true;
@@ -91,3 +91,4 @@ class Proyect {
         return false;
     }
 }
+
