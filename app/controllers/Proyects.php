@@ -129,7 +129,7 @@
                 if(isset($_POST['getproyectIdBtn']) != null)
                 {
                     $proyect_id_selected = $_POST['getproyectIdBtn'];
-                    header('location:' . URLROOT . '/proyects/seedetails/' . $proyect_id_selected);
+                    header('location:' . URLROOT . '/proyects/ver_proyecto/' . $proyect_id_selected);
                 }
             }
 
@@ -253,6 +253,19 @@
             ];
 
             $this->view("proyects/vista_de_proyecto", $data);
+        }
+
+        public function ver_proyecto($params)
+        {
+            $proyectId = $params;
+            $seeDetailsProyect = $this->proyectModel->getEditProyect($proyectId);
+            $data = [
+                'title' => 'Visualizar Propuesta',
+                'seeProyect' => $seeDetailsProyect
+
+            ];
+
+            $this->view("proyects/vista_de_propuesta", $data);
         }
 
     }
