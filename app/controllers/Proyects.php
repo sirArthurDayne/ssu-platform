@@ -1,7 +1,7 @@
 <?php
     //Clase Controlador de Proyectos, esta se encarga de acceder a la BD
     class Proyects extends Controller{
-        
+
         private $lastEditedProyectId = -1;
 
         public function __construct()
@@ -93,17 +93,45 @@
         /*recuperar datos de proyectos APROBADOS*/
         public function listarproyectos()
         {
+
+            if ($_SERVER['REQUEST_METHOD'] == 'POST')
+            {
+                $proyect_id_selected = -1;
+                if (isset($_POST['proyectId_btn']))
+                {
+                    //transicion a pantalla de ver de proyectos
+                    $proyect_id_selected = $_POST['proyectId_btn'];
+                    header('location:' . URLROOT . '/proyects/seedetails/' . $proyect_id_selected);
+                }
+
+            }
+
+
             $aprovedProyects = $this->proyectModel->getProyectByState(2);
             $data = ['title' => 'Listado Proyectos de Labor Social',
                      'aproved' => $aprovedProyects
-                    ];  
+                    ];
+
+
+
+
             $this->view('proyects/listado_proyectos', $data);
         }
-        
+
         /*Recuperar datos de propuestas ENPROCESO*/
         public function listarpropuestas()
         {
             $proposals_data = $this->proyectModel->getInProcessProyects();
+
+            if($_SERVER['REQUEST_METHOD'] == 'POST')
+            {
+                $proyect_id_selected = -1;
+                if(isset($_POST['getproyectIdBtn']) != null)
+                {
+                    $proyect_id_selected = $_POST['getproyectIdBtn'];
+                    header('location:' . URLROOT . '/proyects/seedetails/' . $proyect_id_selected);
+                }
+            }
 
             $data = ['title' => 'Listado de propuestas',
                      'propuestas' => $proposals_data];
@@ -164,12 +192,12 @@
             {
                 if($_POST['user_edit'] == 1)//cancelar
                 {
-                    //volver que administracion  
+                    //volver que administracion
                     header('location: ' . URLROOT . '/proyects/adminproposals');
                 }
                 else //aceptar
                 {
-                    //TODO: validar datos antes de insertar 
+                    //TODO: validar datos antes de insertar
 
                     //recuperar datos
                     $newProyectData = [
@@ -193,8 +221,8 @@
                         'supervisor_email' => trim($_POST['supervisor_email']),
                         'organismo' => trim($_POST['organismo'])
                     ];
-                    var_dump($newProyectData);
 
+                    /* var_dump($newProyectData); */
                     if ($this->proyectModel->insertIntoCurrentProyect($newProyectData, $proyectId))
                     {
                         header('location: ' . URLROOT . '/proyects/adminproposals');
@@ -213,6 +241,19 @@
             $this->view('proyects/editar_propuesta', $data);
         }
 
+        /*Visualizar detalles de proyectos*/
+        public function seedetails($params)
+        {
+            $proyectId = $params;
+            $seeDetailsProyect = $this->proyectModel->getEditProyect($proyectId);
+            $data = [
+                'title' => 'Visualizar Proyecto',
+                'seeProyect' => $seeDetailsProyect
+
+            ];
+
+            $this->view("proyects/vista_de_proyecto", $data);
+        }
 
     }
 ?>

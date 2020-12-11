@@ -35,8 +35,8 @@ class Proyect {
 
     public function getInProcessProyects()
     {
-        //retorna solo proyectos que esten marcados como ENPROCESO en la BD 
-        
+        //retorna solo proyectos que esten marcados como ENPROCESO en la BD
+
         $this->db->query("SELECT * FROM proyecto WHERE estado_id = 1");
         $result = $this->db->resultSet();
         return $result;
@@ -68,22 +68,26 @@ class Proyect {
     public function getEditProyect($proyectId)
     {
         $sql = "SELECT * from proyecto WHERE id = " . $proyectId . ";";
-        
+
         $this->db->query($sql);
         $result = $this->db->singleResult();
         return $result;
 
     }
-    
+
     /*Actualiza informacion de proyecto editado */
     public function insertIntoCurrentProyect($new_data, $proyectId)
     {
         $sql = "UPDATE proyecto SET titulo = '" .$new_data['name'] ."' , objetivo = '" .$new_data['objective'] . "', descripcion = '" .
-            $new_data['description'] . "', nivel = '" . $new_data['level'] .  "' , modalidad = '" . $new_data['mode'] . 
+            $new_data['description'] . "', nivel = '" . $new_data['level'] .  "' , modalidad = '" . $new_data['mode'] ."', est_cantidad = '".
+            $new_data['stud_amount'] . "', est_perfil = '" . $new_data['stud_profile'] . "', lugar = '". $new_data['place'] ."', horas = '" . $new_data['hours']. "', asesor_nombre = '" .
+            $new_data['asesor_name'] . "', asesor_tel = '" . $new_data['asesor_tel'] . "', asesor_email = '" . $new_data['asesor_email'] . "', supervisor_nombre = '" .
+            $new_data['supervisor_name'] . "', supervisor_tel = '" . $new_data['supervisor_tel'] . "', supervisor_email = '" . $new_data['supervisor_email'] . "', organismo_nombre = '" .
+            $new_data['organismo'] .
             "' WHERE id = " . $proyectId . ";";
-        
+
         if ($this->db->query($sql)) return true;
-        
+
         return false;
     }
 }
