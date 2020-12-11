@@ -15,7 +15,7 @@
                 <h4 class="lugar">Lugar: <?php echo $proposal['lugar']; ?>  </h4>
             </div>
             <div>
-                <br><br>
+                <br>
                 <h4>Descripcion:</h4>
                 <p>
                    <?php echo $proposal['descripcion']; ?>

@@ -17,21 +17,36 @@
                     <p><?php echo $proyect['nivel']?></p>
                     <h4>Cantidad de estudiantes:</h4>
                     <p><?php echo $proyect['est_cantidad']?></p>
-                </div>
+                    <h4>Perfil de estudiante:</h4>
+                    <p><?php echo $proyect['est_perfil']?></p>
+                    <h4>Tiempo estimado de realizacion:</h4>
+                    <p><?php echo $proyect['horas']?></p>
+                    <h4>Lugar:</h4>
+                    <p><?php echo $proyect['lugar']?></p>
+                    <h4>Descripcion del lugar</h4>
+                    </div>
             </div>
             <div class="descripcion">
                 <h4>Objetivo:</h4>
                 <p><?php echo $proyect['objetivo']; ?></p>
                 <h4>Descripcion:</h4>
                 <p> <?php echo $proyect['descripcion'];?> </p><br>
-                <h4>Perfil de estudiante:</h4>
-                <p><?php echo $proyect['est_perfil']?></p>
-                <h4>Tiempo estimado de realizacion:</h4>
-                <p><?php echo $proyect['horas']?></p>
-                <h4>Lugar:</h4>
-                <p><?php echo $proyect['lugar']?></p>
-                <h4>Descripcion del lugar</h4>
-                <form action="<?php echo URLROOT?>/proyects/listarproyectos" method="POST">
+                <h3>Datos del asesor</h3>
+                <h4>Nombre:</h4>
+                <p> <?php echo $proyect['asesor_nombre'];?> </p>
+                <h4>Telefono:</h4>
+                <p> <?php echo $proyect['asesor_tel'];?> </p>
+                <h4>Email:</h4>
+                <p> <?php echo $proyect['asesor_email'];?> </p><br>
+                <h3>Datos del supervisor</h3>
+                <h4>Nombre:</h4>
+                <p> <?php echo $proyect['supervisor_nombre'];?> </p>
+                <h4>Telefono:</h4>
+                <p> <?php echo $proyect['supervisor_tel'];?> </p>
+                <h4>Email:</h4>
+                <p> <?php echo $proyect['supervisor_email'];?> </p><br>
+
+                <form action="<?php echo URLROOT?>/proyects/listarpropuestas" method="POST">
                     <button>Volver</button>
                 </form>
             </div>
