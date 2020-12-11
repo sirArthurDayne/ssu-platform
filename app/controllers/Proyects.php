@@ -1,7 +1,7 @@
 <?php
     //Clase Controlador de Proyectos, esta se encarga de acceder a la BD
     class Proyects extends Controller{
-        
+
         private $lastEditedProyectId = -1;
 
         public function __construct()
@@ -114,10 +114,10 @@
 
 
 
-            
+
             $this->view('proyects/listado_proyectos', $data);
         }
-        
+
         /*Recuperar datos de propuestas ENPROCESO*/
         public function listarpropuestas()
         {
@@ -192,12 +192,12 @@
             {
                 if($_POST['user_edit'] == 1)//cancelar
                 {
-                    //volver que administracion  
+                    //volver que administracion
                     header('location: ' . URLROOT . '/proyects/adminproposals');
                 }
                 else //aceptar
                 {
-                    //TODO: validar datos antes de insertar 
+                    //TODO: validar datos antes de insertar
 
                     //recuperar datos
                     $newProyectData = [
@@ -221,8 +221,8 @@
                         'supervisor_email' => trim($_POST['supervisor_email']),
                         'organismo' => trim($_POST['organismo'])
                     ];
-                    var_dump($newProyectData);
 
+                    /* var_dump($newProyectData); */
                     if ($this->proyectModel->insertIntoCurrentProyect($newProyectData, $proyectId))
                     {
                         header('location: ' . URLROOT . '/proyects/adminproposals');
@@ -249,9 +249,9 @@
             $data = [
                 'title' => 'Visualizar Proyecto',
                 'seeProyect' => $seeDetailsProyect
-                
+
             ];
-            
+
             $this->view("proyects/vista_de_proyecto", $data);
         }
 
