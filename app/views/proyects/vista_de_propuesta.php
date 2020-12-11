@@ -3,13 +3,13 @@
 <body>
     <?php require APPROOT.'/partials/navbar.php'?>
     <?php $proyect = $data['seeProyect'];?>
-    
+
     <div class="informacion">
     <h1><?php echo $data['title']; ?></h1>
         <div class="datos">
             <div class="datitos">
                 <h2><?php echo $proyect['titulo'];?></h2>
-                <img src="https://i.pinimg.com/originals/62/ac/2b/62ac2b87143d1b21bce9395281246ad9.jpg" alt="">
+                <img src="<?php echo $proyect['imagen']?>" alt="">
                 <div>
                     <h4>Modalidad:</h4>
                     <p><?php echo $proyect['modalidad']; ?></p>
@@ -24,6 +24,7 @@
                     <h4>Lugar:</h4>
                     <p><?php echo $proyect['lugar']?></p>
                     <h4>Descripcion del lugar</h4>
+                    <p><?php echo $proyect['lugar_descr']; ?></p>
                     </div>
             </div>
             <div class="descripcion">
@@ -51,7 +52,7 @@
                 </form>
             </div>
         </div>
-    </div>    
+    </div>
 </body>
 
 <?php require APPROOT.'/partials/footer.php'?>

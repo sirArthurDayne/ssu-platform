@@ -4,11 +4,13 @@
 <?php require APPROOT.'/partials/navbar.php'?>
     <main>
         <h1><?php echo $data['title'];?></h1>
-        <form action="<?php echo URLROOT; ?>/proyects/register" method="POST">
+        <form action="<?php echo URLROOT; ?>/proyects/register" method="POST" enctype="multipart/form-data">
             <fieldset class = "datos-g">
                 <legend>Datos generales de propuesta</legend>
                 <label for="proyect_name">Titulo o nombre:</label>
                 <input type="text" id="proyect_name" name="proyect_name" placeholder="*" required>
+                <label for="proyect_image">Portada a proyecto (url): </label>
+                <input type="text" name="proyect_image" id="proyect_image">
             <p><label for="proyect_date">Fecha de realizacion:</label>
                 <input type="date" id="proyect_date" name="proyect_date"  placeholder="*" required></p>
                 <p><label for="proyect_obj">Objetivo:</label>

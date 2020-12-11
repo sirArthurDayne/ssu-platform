@@ -367,7 +367,7 @@ footer {
 
 .descripcion p {
   width: 350px;
-  height: ;
+  /* height: ; */
   text-overflow: ellipsis;
   overflow: auto;
 }
