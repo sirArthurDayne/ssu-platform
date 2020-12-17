@@ -4,7 +4,6 @@
 <?php require APPROOT.'/partials/navbar.php'?>
     <main>
         <h1><?php echo $data['title'];?></h1>
-        <p><?php var_dump($data)?></p>
         <form action="<?php echo URLROOT; ?>/proyects/register" method="POST" enctype="multipart/form-data">
             <fieldset class = "datos-g">
                 <legend>Datos generales de propuesta</legend>
