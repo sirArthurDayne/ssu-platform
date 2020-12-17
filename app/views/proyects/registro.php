@@ -15,11 +15,11 @@
                 <input type="text" name="proyect_image" id="proyect_image">
                 <span class="error"><?php echo $data['imagenError']; ?></span>
                 <p><label for="proyect_date">Fecha de realizacion:</label>
-                <input type="date" id="proyect_date" name="proyect_date"  placeholder="*"  ></p>
+                <input type="date" id="proyect_date" name="proyect_date"  placeholder="*"  min="2020-12-11"></p>
                 <span class="error"><?php echo $data['dateError']; ?></span>
                 <p><label for="proyect_obj">Objetivo:</label>
                 <input type="text" id="proyect_obj" name="proyect_obj"   placeholder="*"  ></p>
-                <span> <?php echo $data['objectiveError']; ?> </span>
+                <span class="error"> <?php echo $data['objectiveError']; ?> </span>
                 <p><label for="proyect_descr">Descripcion breve:</label>
                 <span class="error"><?php echo $data['descriptionError']; ?></span>
                 <textarea id="proyect_descr" name="proyect_descr" cols="30" rows="3" placeholder="*"  ></textarea></p>
@@ -43,7 +43,7 @@
                 <legend>Datos para estudiantes</legend>
                 <label for="student_amount">Cantidad maxima de estudiantes (1 a 50)</label>
                 <input type="number" id="student_amount" name="student_amount" min="1" max="50"  ><br>
-                <span><?php echo $data['student_amountError']; ?> </span>
+                <span class="error"><?php echo $data['student_amountError']; ?> </span>
                 <p><label for="student_profile">Perfil de estudiantes</label>
                 <textarea id="student_profile" name="student_profile" cols="30" rows="3" placeholder="*"  ></textarea></p>
                 <span class="error"><?php echo $data['student_profileError']; ?> </span>

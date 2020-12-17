@@ -79,7 +79,7 @@
                     'objective' => trim($_POST['proyect_obj']),
                     'description' => trim($_POST['proyect_descr']),
                     'level' => isset($_POST['level']) ? $_POST['level'] : "",
-                    'mode' => isset($_POST['modalidad']) ? $_POST['mode'] : "",
+                    'mode' => isset($_POST['modalidad']) ? $_POST['modalidad'] : "",
                     'student_amount' => trim($_POST['student_amount']),
                     'student_profile' => trim($_POST['student_profile']),
                     'place' => trim($_POST['place']),
@@ -121,27 +121,36 @@
                 //if error found
                 require_once APPROOT . '/test/validations.php';
 
-                if(emptyField($proposal_data))
+                if(emptyField($proposal_data))//verifica q los campos no esten vacios
                 {
                     $this->view("proyects/registro", $proposal_data);
                     exit();//stop running this script
                 }
-                /* if(exceedCharacterLimit($proposal_data)) */
-                /* { */
-                /*     $this->view("proyects/registro", $proposal_data); */
-                /* } */
-                /* if(notAlfaNumeric()) */
-                /* { */
-                /*     $this->view("proyects/registro", $proposal_data); */
-                /* } */
-                /* if(notValidEmail()) */
-                /* { */
-                /*     $this->view("proyects/registro", $proposal_data); */
-                /* } */
-                /* if(notValidNumber()) */
-                /* { */
-                /*     $this->view("proyects/registro", $proposal_data); */
-                /* } */
+                if(exceedCharacterLimit($proposal_data))//verifica que campos cumplan con limite de caracteres
+                {
+                    $this->view("proyects/registro", $proposal_data);
+                    exit();
+                }
+                if(notAlfaNumeric($proposal_data))//se asegura de algunos campos sean alfanumericos
+                {
+                    $this->view("proyects/registro", $proposal_data);
+                    exit();
+                }
+                if(notAValidNumber($proposal_data))//valida campos con numeros
+                {
+                    $this->view("proyects/registro", $proposal_data);
+                    exit();
+                }
+                if(notValidPhoneNumber($proposal_data))//valida campos con numeros de telefono
+                {
+                    $this->view("proyects/registro", $proposal_data);
+                    exit();
+                }
+                if(notValidEmail($proposal_data))
+                {
+                    $this->view("proyects/registro", $proposal_data);
+                    exit();
+                }
 
                 //register proposal inside BD throw the 'ProyectModel'
                 if($this->proyectModel->registerProyect($proposal_data))
