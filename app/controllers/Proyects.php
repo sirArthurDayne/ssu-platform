@@ -25,7 +25,8 @@
         {
             //limpiar datos del post
             //limpiar el POST
-            $proposal_data = ['title' => 'Registro de propuestas',
+            $proposal_data = [
+            'title' => 'Registro de propuestas',
             'name' => '',
             'objective' => '',
             'description' => '',
@@ -35,7 +36,6 @@
             'student_profile' => '',
             'place' => '',
             'date' => '',
-            'place_descr' => '',
             'hours_amount' => '',
             'asesor_name' => '',
             'asesor_tel' => '',
@@ -45,24 +45,45 @@
             'supervisor_email' => '',
             'organismo' => '',
             'imagen' => '',
-            'lugar_descr'=> ''
+            'lugar_descr'=> '',
+            //error handling data
+            'nameError' => '',
+            'objectiveError' => '',
+            'descriptionError' => '',
+            'levelError' => '',
+            'modeError' => '',
+            'student_amountError' => '',
+            'student_profileError' => '',
+            'placeError' => '',
+            'dateError' => '',
+            'hours_amountError' => '',
+            'asesor_nameError' => '',
+            'asesor_telError' => '',
+            'asesor_emailError' => '',
+            'supervisor_nameError' => '',
+            'supervisor_telError' => '',
+            'supervisor_emailError' => '',
+            'organismoError' => '',
+            'imagenError' => '',
+            'lugar_descrError'=> ''
         ];
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST')
             {
-                echo "validating POST...";
+                /* echo "validating POST..."; */
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                 $proposal_data = [
+
+                    'title' => 'Registro de propuestas',
                     'name' => trim($_POST['proyect_name']),
                     'objective' => trim($_POST['proyect_obj']),
                     'description' => trim($_POST['proyect_descr']),
-                    'level' => trim($_POST['level']),
-                    'mode' => trim($_POST['modalidad']),
+                    'level' => isset($_POST['level']) ? $_POST['level'] : "",
+                    'mode' => isset($_POST['modalidad']) ? $_POST['modalidad'] : "",
                     'student_amount' => trim($_POST['student_amount']),
                     'student_profile' => trim($_POST['student_profile']),
                     'place' => trim($_POST['place']),
                     'date' => trim($_POST['proyect_date']),
-                    'place_descr' => trim($_POST['place_descr']),
                     'hours_amount' => trim($_POST['hours_amount']),
                     'asesor_name' => trim($_POST['asesor_name']),
                     'asesor_tel' => trim($_POST['asesor_tel']),
@@ -72,13 +93,65 @@
                     'supervisor_email' => trim($_POST['supervisor_email']),
                     'organismo' => trim($_POST['organismo']),
                     'imagen' => $_POST['proyect_image'],
-                    'lugar_descr' => trim($_POST['place_descr'])
+                    'lugar_descr' => trim($_POST['place_descr']),
+                    //error handling data
+                    'nameError' => '',
+                    'objectiveError' => '',
+                    'descriptionError' => '',
+                    'levelError' => '',
+                    'modeError' => '',
+                    'student_amountError' => '',
+                    'student_profileError' => '',
+                    'placeError' => '',
+                    'dateError' => '',
+                    'hours_amountError' => '',
+                    'asesor_nameError' => '',
+                    'asesor_telError' => '',
+                    'asesor_emailError' => '',
+                    'supervisor_nameError' => '',
+                    'supervisor_telError' => '',
+                    'supervisor_emailError' => '',
+                    'organismoError' => '',
+                    'imagenError' => '',
+                    'lugar_descrError'=> ''
                 ];
 
 
-                //TODO: validate before sending to DB
-                //$text_regex = "/^[a-zA-Z0-9]*$/";
-                //$number_regex = "/^[0-9]*$/";
+                //start validation before passing to model, return to register
+                //if error found
+                require_once APPROOT . '/test/validations.php';
+
+                if(emptyField($proposal_data))//verifica q los campos no esten vacios
+                {
+                    $this->view("proyects/registro", $proposal_data);
+                    exit();//stop running this script
+                }
+                if(exceedCharacterLimit($proposal_data))//verifica que campos cumplan con limite de caracteres
+                {
+                    $this->view("proyects/registro", $proposal_data);
+                    exit();
+                }
+                if(notAlfaNumeric($proposal_data))//se asegura de algunos campos sean alfanumericos
+                {
+                    $this->view("proyects/registro", $proposal_data);
+                    exit();
+                }
+                if(notAValidNumber($proposal_data))//valida campos con numeros
+                {
+                    $this->view("proyects/registro", $proposal_data);
+                    exit();
+                }
+                if(notValidPhoneNumber($proposal_data))//valida campos con numeros de telefono
+                {
+                    $this->view("proyects/registro", $proposal_data);
+                    exit();
+                }
+                if(notValidEmail($proposal_data))
+                {
+                    $this->view("proyects/registro", $proposal_data);
+                    exit();
+                }
+
                 //register proposal inside BD throw the 'ProyectModel'
                 if($this->proyectModel->registerProyect($proposal_data))
                 {
@@ -87,7 +160,7 @@
                     header('location: ' . URLROOT . '/homes/index');
                 }
                 else {
-                    die('ERROR, something failed when adding a proposal');
+                    die('ERROR, something failed when adding a proposal, after validations');
                 }
 
             }
