@@ -90,5 +90,15 @@ class Proyect {
 
         return false;
     }
+
+    /*Agregar/Actualizar comentarios en proyecto editado o rechazado*/
+    public function updateProyectComment($comment, $proyectId)
+    {
+        $sql = "UPDATE proyecto SET comentario = '" . $comment . "' WHERE id = " . $proyectId  . ";";
+
+        if($this->db->query($sql)) return true;
+
+        return false;
+    }
 }
 
