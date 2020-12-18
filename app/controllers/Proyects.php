@@ -233,8 +233,8 @@
                if ($_POST['admin_action']==3 && $proyect_id_selected != -1) {
                    /* ...RECHAZAR PROYECTO... */
                     $state = 3;
-                    $action_message = $this->proyectModel->setProyectState($proyect_id_selected, $state) ? "se aprobo un proyecto" : "error detectado";
-                    header('location: ' . URLROOT . '/proyects/adminproposals');
+                    $action_message = $this->proyectModel->setProyectState($proyect_id_selected, $state) ? "se rechazo un proyecto" : "error detectado";
+                    header('location: ' . URLROOT . '/proyects/rejectproposal/' . $proyect_id_selected);
                 }
                 else if($_POST['admin_action']==2 && $proyect_id_selected != -1)
                 {
@@ -264,6 +264,11 @@
             $proyectId = $params;
             $toEditProyectData = $this->proyectModel->getEditProyect($proyectId);
 
+            $data = ['title' => 'Sugerencias de Cambio',
+                     'proyecto' => $toEditProyectData,
+                     'comentario' => '',
+                     'comentario_error' => ''
+            ];
             //TODO: checkear post, recuperar datos, actualizar la bd y cambiar de pantalla
             if($_SERVER['REQUEST_METHOD'] == 'POST')
             {
@@ -274,50 +279,120 @@
                 }
                 else //aceptar
                 {
-                    //TODO: validar datos antes de insertar
-
                     //recuperar datos
-                    $newProyectData = [
-                        'name' => trim($_POST['proyect_name']),
-                        'objective' => trim($_POST['proyect_obj']),
-                        'description' => trim($_POST['proyect_descr']),
-                        'level' => trim($_POST['level']),
-                        'mode' => trim($_POST['modalidad']),
-                        'stud_amount' => trim($_POST['student_amount']),
-                        'stud_profile' => trim($_POST['student_profile']),
-                        'hours' => trim($_POST['hours_amount']),
-                        'place'=> trim($_POST['place']),
-                        'place_descr' => trim($_POST['place_descr']),
-                        'proyect_obj' => trim($_POST['proyect_obj']),
-                        'proyect_descr' => trim($_POST['proyect_descr']),
-                        'asesor_name' => trim($_POST['asesor_name']),
-                        'asesor_tel' => trim($_POST['asesor_tel']),
-                        'asesor_email' => trim($_POST['asesor_email']),
-                        'supervisor_name'=> trim($_POST['supervisor_name']),
-                        'supervisor_tel' => trim($_POST['supervisor_tel']),
-                        'supervisor_email' => trim($_POST['supervisor_email']),
-                        'organismo' => trim($_POST['organismo']),
-                        'imagen' => trim($_POST['proyect_image']),
-                        'lugar_descr' => trim($_POST['place_descr'])
-                    ];
-
-                    /* var_dump($newProyectData); */
-                    if ($this->proyectModel->insertIntoCurrentProyect($newProyectData, $proyectId))
+                    // $newProyectData = [
+                    //     'name' => trim($_POST['proyect_name']),
+                    //     'objective' => trim($_POST['proyect_obj']),
+                    //     'description' => trim($_POST['proyect_descr']),
+                    //     'level' => trim($_POST['level']),
+                    //     'mode' => trim($_POST['modalidad']),
+                    //     'stud_amount' => trim($_POST['student_amount']),
+                    //     'stud_profile' => trim($_POST['student_profile']),
+                    //     'hours' => trim($_POST['hours_amount']),
+                    //     'place'=> trim($_POST['place']),
+                    //     'place_descr' => trim($_POST['place_descr']),
+                    //     'proyect_obj' => trim($_POST['proyect_obj']),
+                    //     'proyect_descr' => trim($_POST['proyect_descr']),
+                    //     'asesor_name' => trim($_POST['asesor_name']),
+                    //     'asesor_tel' => trim($_POST['asesor_tel']),
+                    //     'asesor_email' => trim($_POST['asesor_email']),
+                    //     'supervisor_name'=> trim($_POST['supervisor_name']),
+                    //     'supervisor_tel' => trim($_POST['supervisor_tel']),
+                    //     'supervisor_email' => trim($_POST['supervisor_email']),
+                    //     'organismo' => trim($_POST['organismo']),
+                    //     'imagen' => trim($_POST['proyect_image']),
+                    //     'lugar_descr' => trim($_POST['place_descr'])
+                    // ];
+                    
+                    if(isset($_POST['motivo']))
                     {
-                        header('location: ' . URLROOT . '/proyects/adminproposals');
+                        $data = ['title' => 'Sugerencias de Cambio',
+                        'proyecto' => $toEditProyectData,
+                        'comentario' => trim($_POST['motivo']),
+                        'comentario_error' => ''
+                        ];
+                        if(!empty($data['comentario']))
+                        {
+                            //insert into db and return to adminproposal
+                            if($this->proyectModel->updateProyectComment($data['comentario'], $proyectId))
+                            {
+                                header('location: ' . URLROOT . '/proyects/adminproposals');   
+                            }
+                            else
+                            {
+                                die("Error, no se pudo guardar el comment en la BD");
+                                //header('location: ' . URLROOT . '/homes/index');
+                            }
+                        }
+                        else
+                        {
+                            $data['comentario_error'] = "Debe escribir una sugerencia";
+                            $this->view("proyects/editpropuesta", $data);
+                        }
                     }
-                    else // si falla todo, regresas a la pagina principal
+                    else
                     {
-                       header('location: ' . URLROOT . '/homes/index');
+                        $data['comentario_error'] = "Debe escribir algo";
+                        $this->view("proyects/editpropuesta", $data);
                     }
-
                 }
             }
 
-            $data = ['title' => 'Editar propuestas',
-                     'proyecto' => $toEditProyectData,
+            
+            $this->view('proyects/editpropuesta', $data);
+        }
+
+        /*llamado a pantalla de rechazo de propuestas */
+        public function rejectproposal($params)
+        {
+            //recuperar datos de propuesta que se va a editar
+            $proyectId = $params;
+            $rejectedProyect = $this->proyectModel->getEditProyect($proyectId);
+
+            $data = [
+                'title' => 'Rechazo de Propuesta',
+                'proyecto' => $rejectedProyect,
+                'comentario' => '',
+                'comentario_error' => ''
             ];
-            $this->view('proyects/editar_propuesta', $data);
+
+            if ($_SERVER['REQUEST_METHOD'] == 'POST')
+            {
+                if(isset($_POST['motivo_rechazo']))
+                {
+                    $data = [
+                        'title' => 'Rechazo de Propuesta',
+                        'proyecto' => $rejectedProyect,
+                        'comentario' => trim($_POST['motivo_rechazo']),
+                        'comentario_error' => ''
+                    ];
+                    if(!empty($data['comentario']))
+                    {
+                        //insert into db and return to adminproposal
+                        if($this->proyectModel->updateProyectComment($data['comentario'], $proyectId))
+                        {
+                            header('location: ' . URLROOT . '/proyects/adminproposals');   
+                        }
+                        else
+                        {
+                            die("Error, no se pudo guardar el comment en la BD");
+                        }
+                    }
+                    else 
+                    {
+                        $data['comentario_error'] = "Debe escribir motivo de rechazo"; 
+                        $this->view("proyects/rejectpropuesta", $data);
+                    }
+                }
+                else//error message
+                {
+                    $data['comentario_error'] = "Debe escribir motivo de rechazo"; 
+                    $this->view("proyects/rejectpropuesta", $data);
+                    exit();
+                }
+            }
+
+            $this->view("proyects/rejectpropuesta", $data);
         }
 
         /*Visualizar detalles de proyectos*/
