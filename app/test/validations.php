@@ -178,11 +178,6 @@ function notAlfaNumeric(& $incomingData)
         $incomingData['nameError'] = $out_message;
         return true;
     }
-    if(!preg_match($text_regex, $incomingData['place']))
-    {
-        $incomingData['placeError'] = $out_message;
-        return true;
-    }
     if(!preg_match($text_regex, $incomingData['asesor_name']))
     {
         $incomingData['asesor_nameError'] = $out_message;
@@ -233,18 +228,38 @@ function notValidPhoneNumber(& $incomingData)
 function notAValidNumber(& $incomingData)
 {
     /* $validNumber_regex = "/[^0-9]+$/";//solo numeros positivos */
-    $out_message = "numero no valido";
-    $amount1 = (int)$incomingData['student_amount'];
-    $amount2 = (int)$incomingData['hours_amount'];
-    if(!is_numeric($amount1) <= 0 || !is_numeric($amount1) >= 50)
+    $out_message = "Debe colocar digitos numericos";
+    $amount1 = $incomingData['student_amount'];
+    $amount2 = $incomingData['hours_amount'];
+    if(!is_numeric($amount1))
     {
         $incomingData['student_amountError'] = $out_message;
         return true;
     }
-    if(!is_numeric($amount2) <= 0 || !is_numeric($amount2) >= 1000)
+    else {
+        if ($incomingData['student_amount'] <= 0) {
+            $incomingData['student_amountError'] = "La cantidad de estudiantes debe ser mayor a 1";
+            return true;
+        }
+        elseif ($incomingData['student_amount'] >= 50) {
+            $incomingData['student_amountError'] = "La cantidad de estudiantes debe ser menor a 50";
+            return true;
+        }
+    }
+    if(!is_numeric($amount2))
     {
         $incomingData['hours_amountError'] = $out_message;
         return true;
+    }
+    else {
+        if ($incomingData['hours_amount'] <= 0) {
+            $incomingData['hours_amountError'] = "La cantidad de horas debe ser mayor a 1";
+            return true;
+        }
+        elseif ($incomingData['hours_amount'] >= 1000) {
+            $incomingData['hours_amountError'] = "La cantidad de horas debe ser menor a 1000";
+            return true;
+        }
     }
     return false;
 }

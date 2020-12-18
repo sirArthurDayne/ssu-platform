@@ -20,8 +20,8 @@
                 <input type="text" id="proyect_obj" name="proyect_obj"   placeholder="*"  ></p>
                 <span class="error"> <?php echo $data['objectiveError']; ?> </span>
                 <p><label for="proyect_descr">Descripcion breve:</label>
-                <span class="error"><?php echo $data['descriptionError']; ?></span>
                 <textarea id="proyect_descr" name="proyect_descr" cols="30" rows="3" placeholder="*"  ></textarea></p>
+                <span class="error"><?php echo $data['descriptionError']; ?></span>
             </fieldset>
 
             <fieldset>
@@ -41,13 +41,13 @@
             <fieldset>
                 <legend>Datos para estudiantes</legend>
                 <label for="student_amount">Cantidad maxima de estudiantes (1 a 50)</label>
-                <input type="number" id="student_amount" name="student_amount" min="1" max="50"  ><br>
+                <input type="text" id="student_amount" name="student_amount"><br>
                 <span class="error"><?php echo $data['student_amountError']; ?> </span>
                 <p><label for="student_profile">Perfil de estudiantes</label>
                 <textarea id="student_profile" name="student_profile" cols="30" rows="3" placeholder="*"  ></textarea></p>
-                <span class="error"><?php echo $data['student_profileError']; ?> </span>
+                <span class="error"><?php echo $data['student_profileError']; ?> </span><br>
                 <label for="hours_amount">Tiempo estimado de realizacion(1 a 1000h)</label>
-                <input type="number" name="hours_amount" min="1" max="1000"  >
+                <input type="text" name="hours_amount">
                 <span class="error"><?php echo $data['hours_amountError']; ?> </span>
             </fieldset>
 
@@ -55,7 +55,7 @@
                 <legend>Datos del lugar</legend>
                 <label for="place">Lugar de realizacion</label>
                 <input type="text" name="place" placeholder="*"  ><br>
-                <span class="error"><?php echo $data['placeError']; ?> </span>
+                <span class="error"><?php echo $data['placeError']; ?> </span><br>
                 <label for="place_descr">Lugar descripcion</label>
                 <input type="text" id="place_descr" name="place_descr" placeholder="*"  >
                 <span class="error"><?php echo $data['lugar_descrError']; ?> </span>
@@ -66,10 +66,10 @@
                 <legend>Datos de asesor</legend>
                 <label for="asesor_name">Nombre completo</label>
                 <input type="text" id="asesor_name" name="asesor_name" placeholder="*"  ><br>
-                <span class="error"><?php echo $data['asesor_nameError']; ?> </span>
+                <span class="error"><?php echo $data['asesor_nameError']; ?> </span><br>
                 <label for="asesor_tel">Telefono o celular</label>
                 <input type="tel" id="asesor_tel" name="asesor_tel" placeholder="*"  ><br>
-                <span class="error"><?php echo $data['asesor_telError']; ?> </span>
+                <span class="error"><?php echo $data['asesor_telError']; ?> </span><br>
                 <label for="asesor_email">Email</label>
                 <input type="email" id="asesor_email" name="asesor_email" placeholder="*"  ><br>
                 <span class="error"><?php echo $data['asesor_emailError']; ?> </span>
