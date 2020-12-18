@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `proyecto` (
   `estado_id` int(11) NOT NULL DEFAULT 1,
   `titulo` varchar(75) NOT NULL DEFAULT 'empty',
   `objetivo` varchar(200) NOT NULL DEFAULT 'empty',
-  `descripcion` varchar(200) NOT NULL DEFAULT 'empty',
+  `descripcion` varchar(250) NOT NULL DEFAULT 'empty',
   `nivel` varchar(50) NOT NULL DEFAULT 'empty',
   `modalidad` varchar(50) NOT NULL DEFAULT 'empty',
   `est_cantidad` int(11) NOT NULL DEFAULT 0,

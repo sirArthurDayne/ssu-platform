@@ -10,7 +10,7 @@
                 <label for="proyect_name">Titulo o nombre:</label>
                 <input type="text" id="proyect_name" name="proyect_name" placeholder="*"  >
                 <span class="error"><?php echo $data['nameError']; ?></span>
-                <label for="proyect_image">Portada a proyecto (url): </label>
+                <br><label for="proyect_image">Portada a proyecto (url): </label>
                 <input type="text" name="proyect_image" id="proyect_image">
                 <span class="error"><?php echo $data['imagenError']; ?></span>
                 <p><label for="proyect_date">Fecha de realizacion:</label>
