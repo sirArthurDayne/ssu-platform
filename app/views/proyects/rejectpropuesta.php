@@ -2,6 +2,7 @@
 <body>
     <?php require APPROOT.'/partials/navbar.php'?>
     <h1> <?php echo $data['title'];?> </h1>
+    <span class="success"><?php echo $data['mensaje_exito']; ?> </span>
     <p> <?php $current_proyect = $data['proyecto']; ?> </p>
 
     <form action="<?php echo URLROOT ?>/proyects/rejectproposal/<?php echo $current_proyect['id']?>" method="POST">

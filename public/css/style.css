@@ -117,7 +117,7 @@ option {
   background-color: #93108d;
 }
 
-.navbar-dropdown1:hover .navbar-content1 {
+.navbar-dropdown1 .navbar-content1 {
   display: block;
 }
 .navbar-dropdown2:hover .navbar-content2 {

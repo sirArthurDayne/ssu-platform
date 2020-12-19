@@ -87,7 +87,7 @@ function emptyField(& $incomingData)
         $incomingData['supervisor_telError'] = "Debe colocar el telefono del supervisor";
         return true;
     }
-    if(empty($incomingData['asesor_email']))
+    if(empty($incomingData['supervisor_email']))
     {
         $incomingData['supervisor_emailError'] = "Debe colocar el email del supervisor";
         return true;
@@ -164,6 +164,11 @@ function exceedCharacterLimit(& $incomingData)
         $incomingData['supervisor_emailError'] = "El email del supervisor es demasiado largo el limite es de " . MAX_INPUT_SIZE . ".";
         return true;
     }
+    if(strlen($incomingData['organizacion']) > MAX_INPUT_SIZE)
+    {
+        $incomingData['supervisor_emailError'] = "El nombre de la organizacion es demasiado largo el limite es de " . MAX_INPUT_SIZE . ".";
+        return true;
+    }
     //pass this validation
     return false;
 }
@@ -212,12 +217,12 @@ function notValidPhoneNumber(& $incomingData)
     $number_regex = "/[\d]+\-?[\d]+/";//permite numeros con guiones o sin guiones
 
     $out_message = "numero de telefono no valido";
-    if(!preg_match($number_regex, $incomingData['asesor_tel']) || strlen($incomingData['asesor_tel']) > 8 ||  strlen($incomingData['asesor_tel']) < 7)
+    if(!preg_match($number_regex, $incomingData['asesor_tel']) || strlen($incomingData['asesor_tel']) > 9 ||  strlen($incomingData['asesor_tel']) < 7)
     {
         $incomingData['asesor_telError'] = $out_message;
         return true;
     }
-    if(!preg_match($number_regex, $incomingData['supervisor_tel']) || strlen($incomingData['supervisor_tel']) > 8 || strlen($incomingData['supervisor_tel']) < 7)
+    if(!preg_match($number_regex, $incomingData['supervisor_tel']) || strlen($incomingData['supervisor_tel']) > 9 || strlen($incomingData['supervisor_tel']) < 7)
     {
         $incomingData['supervisor_telError'] = $out_message;
         return true;

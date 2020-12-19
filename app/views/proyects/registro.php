@@ -4,6 +4,7 @@
 <?php require APPROOT.'/partials/navbar.php'?>
     <main>
         <h1><?php echo $data['title'];?></h1>
+        <span class="success"><?php echo $data['confirmacion']; ?> </span>
         <form action="<?php echo URLROOT; ?>/proyects/register" method="POST" enctype="multipart/form-data">
             <fieldset class = "datos-g">
                 <legend>Datos generales de propuesta</legend>
@@ -68,7 +69,7 @@
                 <input type="text" id="asesor_name" name="asesor_name" placeholder="*"  ><br>
                 <span class="error"><?php echo $data['asesor_nameError']; ?> </span><br>
                 <label for="asesor_tel">Telefono o celular</label>
-                <input type="tel" id="asesor_tel" name="asesor_tel" placeholder="*"  ><br>
+                <input type="text" id="asesor_tel" name="asesor_tel" placeholder="*"  ><br>
                 <span class="error"><?php echo $data['asesor_telError']; ?> </span><br>
                 <label for="asesor_email">Email</label>
                 <input type="email" id="asesor_email" name="asesor_email" placeholder="*"  ><br>
@@ -79,13 +80,13 @@
                 <legend>Datos de supervisor</legend>
                 <label for="supervisor_name">Nombre</label>
                 <input type="text" id="supervisor_name" name="supervisor_name" placeholder="*"  ><br>
-                <span class="error"><?php echo $data['supervisor_nameError']; ?> </span>
+                <span class="error"><?php echo $data['supervisor_nameError']; ?> </span><br>
                 <label for="supervisor_tel">Telefono de supervisor</label>
                 <input type="tel" name="supervisor_tel" placeholder="*"  ><br>
-                <span class="error"><?php echo $data['supervisor_telError']; ?> </span>
+                <span class="error"><?php echo $data['supervisor_telError']; ?> </span><br>
                 <label for="supervisor_email">Email de supervisor </label>
                 <input type="email" name="supervisor_email" placeholder="*"  ><br>
-                <span class="error"><?php echo $data['supervisor_emailError']; ?> </span>
+                <span class="error"><?php echo $data['supervisor_emailError']; ?> </span><br>
                 <label for="organismo">Organismo proponente</label>
                 <input type="text" id="organismo" name="organismo" placeholder="*"  ><br>
                 <span class="error"><?php echo $data['organismoError']; ?> </span>
@@ -93,6 +94,7 @@
 
             <button type="submit" data-message="enviar-propuesta" class="registrobtn">Enviar Formulario de Propuesta</button>
         </form>
+        
     </main>
 
 </body>
