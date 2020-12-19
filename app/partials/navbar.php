@@ -1,4 +1,4 @@
-<?php $url_root = "http://localhost/ssu-platform"?>
+<?php $url_root = "http://localhost:82"?>
 <div class="header">
         <div class="img-header">
             <img src="<?php echo $url_root ?>/public/img/logo_utp.png" width="90" height="90">

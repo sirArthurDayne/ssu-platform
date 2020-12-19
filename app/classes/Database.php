@@ -4,7 +4,7 @@
         private $db_user = DB_USER;
         private $db_pass = DB_PASSWORD;
         private $db_name = DB_NAME;
-        private $db_port = DB_PORT;
+       // private $db_port = '';
 
         private $statement;//almacenar resultado del query
         private $db_handler;//ejecutara el query
@@ -13,7 +13,7 @@
         public function __construct()
         {
             $this->db_handler = new mysqli($this->db_host, $this->db_user, $this->db_pass,
-                $this->db_name, $this->db_port);
+                $this->db_name);
 
             if($this->db_handler->connect_errno)
             {
