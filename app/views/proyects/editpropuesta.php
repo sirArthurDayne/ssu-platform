@@ -3,7 +3,7 @@
     <?php require APPROOT.'/partials/navbar.php'?>
     <?php $current_proyect = $data['proyecto']; ?>
     <h1> <?php echo $data['title'];?> </h1>
-    <p> <?php var_dump($current_proyect); ?> </p>
+    <span class="success"><?php echo $data['mensaje_exito']; ?> </span>
 
     <form action="<?php echo URLROOT ?>/proyects/editproposal/<?php echo $current_proyect['id']?>" method="POST">
     <fieldset>
@@ -15,7 +15,7 @@
 
     <div class="botones">
             <button type="submit" class="boton" name="user_edit"  value="1" onclick="alert('cancelando sugerencia, regresando a administrar...')">Cancelar</button>
-            <button type="submit" class="boton" name="user_edit"  value="2" onclick="alert('guardando sugerencias...')">Enviar</button>
+            <button type="submit" class="boton" name="user_edit"  value="2">Enviar</button>
         </div>
     </form>
 </body>

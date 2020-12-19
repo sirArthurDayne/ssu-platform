@@ -4,6 +4,7 @@
 <?php require APPROOT.'/partials/navbar.php'?>
     <main>
         <h1><?php echo $data['title'];?></h1>
+        <span class="success"><?php echo $data['confirmacion']; ?> </span>
         <form action="<?php echo URLROOT; ?>/proyects/register" method="POST" enctype="multipart/form-data">
             <fieldset class = "datos-g">
                 <legend>Datos generales de propuesta</legend>
@@ -93,6 +94,7 @@
 
             <button type="submit" data-message="enviar-propuesta" class="registrobtn">Enviar Formulario de Propuesta</button>
         </form>
+        
     </main>
 
 </body>

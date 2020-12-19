@@ -65,7 +65,8 @@
             'supervisor_emailError' => '',
             'organismoError' => '',
             'imagenError' => '',
-            'lugar_descrError'=> ''
+            'lugar_descrError'=> '',
+            'confirmacion' => ''
         ];
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -113,7 +114,8 @@
                     'supervisor_emailError' => '',
                     'organismoError' => '',
                     'imagenError' => '',
-                    'lugar_descrError'=> ''
+                    'lugar_descrError'=> '',
+                    'confirmacion' => ''
                 ];
 
 
@@ -156,7 +158,10 @@
                 if($this->proyectModel->registerProyect($proposal_data))
                 {
                     //redirect to homepage when proposal is save
-                    echo "si ves esto es porque se agrego en la BD!!";
+                    $proposal_data['confirmacion'] = "Se ha Guardado la informacion";
+                    $this->view("proyects/registro", $proposal_data);
+                    sleep(5);
+                    
                     header('location: ' . URLROOT . '/homes/index');
                 }
                 else {
@@ -232,8 +237,6 @@
 
                if ($_POST['admin_action']==3 && $proyect_id_selected != -1) {
                    /* ...RECHAZAR PROYECTO... */
-                    $state = 3;
-                    $action_message = $this->proyectModel->setProyectState($proyect_id_selected, $state) ? "se rechazo un proyecto" : "error detectado";
                     header('location: ' . URLROOT . '/proyects/rejectproposal/' . $proyect_id_selected);
                 }
                 else if($_POST['admin_action']==2 && $proyect_id_selected != -1)
@@ -267,7 +270,8 @@
             $data = ['title' => 'Sugerencias de Cambio',
                      'proyecto' => $toEditProyectData,
                      'comentario' => '',
-                     'comentario_error' => ''
+                     'comentario_error' => '',
+                     'mensaje_exito' => ''
             ];
             //TODO: checkear post, recuperar datos, actualizar la bd y cambiar de pantalla
             if($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -309,24 +313,32 @@
                         $data = ['title' => 'Sugerencias de Cambio',
                         'proyecto' => $toEditProyectData,
                         'comentario' => trim($_POST['motivo']),
-                        'comentario_error' => ''
+                        'comentario_error' => '',
+                        'mensaje_exito' => ''
                         ];
                         if(!empty($data['comentario']))
                         {
-                            //insert into db and return to adminproposal
-                            if($this->proyectModel->updateProyectComment($data['comentario'], $proyectId))
-                            {
-                                header('location: ' . URLROOT . '/proyects/adminproposals');   
+                            if (strlen($data['comentario']) > 500) {
+                                $data['comentario_error'] = "La sugerencia de cambio es demasiado largo"; 
+                                $this->view("proyects/editpropuesta", $data);
                             }
-                            else
-                            {
-                                die("Error, no se pudo guardar el comment en la BD");
-                                //header('location: ' . URLROOT . '/homes/index');
+                            else {
+                                //insert into db and return to adminproposal
+                                if($this->proyectModel->updateProyectComment($data['comentario'], $proyectId))
+                                {
+                                    $data['mensaje_exito'] = "Se a guardado la sugerencia";
+                                    $this->view("proyects/editpropuesta", $data);   
+                                }
+                                else
+                                {
+                                    die("Error, no se pudo guardar el comment en la BD");
+                                    //header('location: ' . URLROOT . '/homes/index');
+                                }
                             }
                         }
                         else
                         {
-                            $data['comentario_error'] = "Debe escribir una sugerencia";
+                            $data['comentario_error'] = "Debe colocar un mensaje de sugerencia de cambio";
                             $this->view("proyects/editpropuesta", $data);
                         }
                     }
@@ -353,7 +365,8 @@
                 'title' => 'Rechazo de Propuesta',
                 'proyecto' => $rejectedProyect,
                 'comentario' => '',
-                'comentario_error' => ''
+                'comentario_error' => '',
+                'mensaje_exito' => ''
             ];
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -364,29 +377,39 @@
                         'title' => 'Rechazo de Propuesta',
                         'proyecto' => $rejectedProyect,
                         'comentario' => trim($_POST['motivo_rechazo']),
-                        'comentario_error' => ''
+                        'comentario_error' => '',
+                        'mensaje_exito' => ''
                     ];
                     if(!empty($data['comentario']))
                     {
                         //insert into db and return to adminproposal
-                        if($this->proyectModel->updateProyectComment($data['comentario'], $proyectId))
-                        {
-                            header('location: ' . URLROOT . '/proyects/adminproposals');   
+                        if (strlen($data['comentario']) > 500) {
+                            $data['comentario_error'] = "El motivo del rechazo es demasido largo"; 
+                            $this->view("proyects/rejectpropuesta", $data);
                         }
+                        else {
+                            if($this->proyectModel->updateProyectComment($data['comentario'], $proyectId))
+                            {
+                                $state = 3;
+                                $action_message = $this->proyectModel->setProyectState($proyectId, $state) ? "se rechazo un proyecto" : "error detectado";
+                                $data['mensaje_exito'] = "Se ha guardado el motivo del rechazo";
+                                $this->view("proyects/rejectpropuesta", $data);  
+                            }
                         else
                         {
                             die("Error, no se pudo guardar el comment en la BD");
                         }
+                        }
                     }
                     else 
                     {
-                        $data['comentario_error'] = "Debe escribir motivo de rechazo"; 
+                        $data['comentario_error'] = "Debe colocar un motivo de rechazo"; 
                         $this->view("proyects/rejectpropuesta", $data);
                     }
                 }
                 else//error message
                 {
-                    $data['comentario_error'] = "Debe escribir motivo de rechazo"; 
+                    $data['comentario_error'] = "Debe colocar motivo de rechazo"; 
                     $this->view("proyects/rejectpropuesta", $data);
                     exit();
                 }

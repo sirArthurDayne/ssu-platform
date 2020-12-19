@@ -164,6 +164,11 @@ function exceedCharacterLimit(& $incomingData)
         $incomingData['supervisor_emailError'] = "El email del supervisor es demasiado largo el limite es de " . MAX_INPUT_SIZE . ".";
         return true;
     }
+    if(strlen($incomingData['organizacion']) > MAX_INPUT_SIZE)
+    {
+        $incomingData['supervisor_emailError'] = "El nombre de la organizacion es demasiado largo el limite es de " . MAX_INPUT_SIZE . ".";
+        return true;
+    }
     //pass this validation
     return false;
 }

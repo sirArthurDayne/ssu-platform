@@ -48,12 +48,13 @@ CREATE TABLE IF NOT EXISTS `proyecto` (
   `organismo_nombre` varchar(50) NOT NULL DEFAULT 'empty',
   `imagen` varchar(500) NOT NULL DEFAULT 'empty',
   `lugar_descr` varchar(100) NOT NULL DEFAULT 'empty',
+  `comentario` varchar(500) NOT NULL DEFAULT 'empty',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   KEY `FK_estado_proyecto` (`estado_id`),
   CONSTRAINT `FK_estado_proyecto` FOREIGN KEY (`estado_id`) REFERENCES `estado` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
