@@ -64,7 +64,7 @@ class Proyect {
         return false;
     }
 
-    /*Retorna la propuesta a editar */
+    /*Retorna la propuesta/proyecto en base a su id */
     public function getEditProyect($proyectId)
     {
         $sql = "SELECT * from proyecto WHERE id = " . $proyectId . ";";
