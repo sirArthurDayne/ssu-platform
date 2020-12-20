@@ -41,6 +41,10 @@ Ejemplo win10:
     * En caso de fallo, asegúrese de que el puerto que este usando no este ocupado. Por defecto se usa el _port 80_.
     * Esto último esta sujeto a cambios a medida que el proyecto crezca.  
 
+## RAMAS
+ - ```master```: contiene todo el codigo final del proyecto, utilizado para pruebas con selenium.
+ -```test-docker```:codigo modificado para funcionar dentro de contenedores, incluye su ```dockerfile``` y ```docker-compose.yml```, utilizado para pruebas con PhpUnit.
+
 ## Explicacion de carpetas
 
 La carpeta ```ssu-platform``` almacena 2 subcarpetas:
